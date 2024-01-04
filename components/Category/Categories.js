@@ -1,6 +1,7 @@
 import { ScrollView } from "react-native";
 import React from "react";
 import CategoryCard from "./CategoryCard";
+import FeaturedRestaurant from "./FeaturedRestaurant";
 
 const Categories = () => {
   return (
@@ -10,10 +11,10 @@ const Categories = () => {
       contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
     >
       <CategoryCard img="" title="Testing" />
-      <FeaturedRow
+      <FeaturedRestaurant
         title="Featured"
         description="Some of our best eats!"
-        featuredCategory="Featured"
+        img=""
       />
     </ScrollView>
   );
