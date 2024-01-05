@@ -7,7 +7,7 @@ const CategoryCard = ({ img, title }) => {
   return (
     <TouchableOpacity style={tw`relative mr-2`}>
       <Image source={{ uri: img }} style={tw`h-20 w-20 rounded`} />
-      <Text style={tw`abssolute bottom-1 left-1 text-white font-bold`}>
+      <Text style={tw`absolute bottom-1 left-1 text-white font-bold`}>
         {title}
       </Text>
     </TouchableOpacity>

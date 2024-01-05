@@ -10,7 +10,6 @@ const Categories = () => {
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
     >
-      <CategoryCard img="" title="Testing" />
       <FeaturedRestaurant
         title="Featured"
         description="Some of our best eats!"
