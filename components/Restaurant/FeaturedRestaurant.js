@@ -1,8 +1,10 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
 import { AntDesign } from "@expo/vector-icons";
 import tw from "twrnc";
+
+import RestaurantCard from "./RestaurantCard";
 
 const FeaturedRestaurant = ({ title, description, img }) => {
   return (
@@ -12,6 +14,13 @@ const FeaturedRestaurant = ({ title, description, img }) => {
         <AntDesign name="arrowright" size={24} color="black" />
       </View>
       <Text style={tw`text-xs text-gray-500 px-4`}>{description}</Text>
+      <ScrollView
+        horizontal
+        contentContainerStyle={{ paddingHorizontal: 15 }}
+        showsHorizontalScrollIndicator={false}
+      >
+        <RestaurantCard />
+      </ScrollView>
     </View>
   );
 };
