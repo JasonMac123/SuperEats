@@ -3,9 +3,9 @@ import React from "react";
 
 const CartScreen = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>CartScreen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
