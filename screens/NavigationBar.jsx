@@ -8,6 +8,8 @@ import SearchScreen from "./SearchScreen";
 import ProfileScreen from "./ProfileScreen";
 import CartScreen from "./CartScreen";
 
+import tw from "twrnc";
+
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
@@ -19,8 +21,8 @@ const screenOptions = {
     bottom: 0,
     right: 0,
     left: 0,
-    elevation: 0,
-    height: 70,
+    elevation: 220,
+    height: 100,
   },
 };
 
@@ -31,12 +33,13 @@ const NavigationBar = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: (focused) => {
+          tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
                 name={focused ? "home" : "home-outline"}
                 size={24}
-                color={focused ? "black" : "gray"}
+                color={"black"}
+                style={!focused ? tw`opacity-20` : ""}
               />
             );
           },
@@ -46,12 +49,13 @@ const NavigationBar = () => {
         name="Search"
         component={SearchScreen}
         options={{
-          tabBarIcon: (focused) => {
+          tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
                 name={"search"}
                 size={24}
-                color={focused ? "black" : "gray"}
+                color={"black"}
+                style={!focused ? tw`opacity-20` : ""}
               />
             );
           },
@@ -61,12 +65,13 @@ const NavigationBar = () => {
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: (focused) => {
+          tabBarIcon: ({ focused }) => {
             return (
               <FontAwesome
                 name={"user"}
                 size={24}
-                color={focused ? "black" : "gray"}
+                color={"black"}
+                style={!focused ? tw`opacity-20` : ""}
               />
             );
           },
@@ -76,12 +81,13 @@ const NavigationBar = () => {
         name="Cart"
         component={CartScreen}
         options={{
-          tabBarIcon: (focused) => {
+          tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
                 name={"cart-sharp"}
                 size={24}
-                color={focused ? "black" : "gray"}
+                color={"black"}
+                style={!focused ? tw`opacity-20` : ""}
               />
             );
           },
