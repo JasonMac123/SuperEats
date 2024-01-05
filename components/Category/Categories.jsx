@@ -1,7 +1,7 @@
 import { ScrollView } from "react-native";
 import React from "react";
 import CategoryCard from "./CategoryCard";
-import FeaturedRestaurant from "./FeaturedRestaurant";
+import FeaturedRestaurant from "../Restaurant/FeaturedRestaurant";
 
 const Categories = () => {
   return (
