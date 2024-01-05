@@ -22,9 +22,7 @@ const HomeScreen = () => {
       <ScrollView
         style={tw`bg-gray-100`}
         contentContainerStyle={{ paddingBottom: 100 }}
-      >
-        <Categories />
-      </ScrollView>
+      ></ScrollView>
     </SafeAreaView>
   );
 };
