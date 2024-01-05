@@ -19,7 +19,18 @@ const FeaturedRestaurant = ({ title, description, img }) => {
         contentContainerStyle={{ paddingHorizontal: 15 }}
         showsHorizontalScrollIndicator={false}
       >
-        <RestaurantCard />
+        <RestaurantCard
+          id={123}
+          img={""}
+          title={"Sushi"}
+          rating={4.5}
+          genre={"Japanese"}
+          address={"123 Grand"}
+          shortDescription={"Description"}
+          dishes={[]}
+          long={20}
+          lat={0}
+        />
       </ScrollView>
     </View>
   );
