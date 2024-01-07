@@ -9,17 +9,22 @@ import tw from "twrnc";
 
 import SearchBar from "./SearchBar";
 import BottomSheet from "./BottomSheet";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 const Header = () => {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
+  const openModal = () => {
+    bottomSheetRef.current?.present();
+  };
+
   return (
     <>
-      <BottomSheet />
+      <BottomSheet ref={bottomSheetRef} />
       <View style={tw`flex-row pb-3 items-center mx-4 gap-2`}>
         <Ionicons name="fast-food" size={40} color="green" />
         <View style={tw`flex-1`}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={openModal}>
             <Text style={tw`font-bold text-gray-400 text-xs`}>
               Deliver now!
             </Text>
