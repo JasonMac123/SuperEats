@@ -39,7 +39,7 @@ const NavigationBar = () => {
                 name={focused ? "home" : "home-outline"}
                 size={24}
                 color={"black"}
-                style={!focused ? styles.icon : styles.icon}
+                style={!focused ? styles.icon : styles.focusedIcon}
               />
             );
           },
@@ -55,7 +55,7 @@ const NavigationBar = () => {
                 name={"search"}
                 size={24}
                 color={"black"}
-                style={!focused ? styles.icon : styles.icon}
+                style={!focused ? styles.icon : styles.focusedIcon}
               />
             );
           },
@@ -71,7 +71,7 @@ const NavigationBar = () => {
                 name={"user"}
                 size={24}
                 color={"black"}
-                style={!focused ? styles.icon : styles.icon}
+                style={!focused ? styles.icon : styles.focusedIcon}
               />
             );
           },
@@ -87,7 +87,7 @@ const NavigationBar = () => {
                 name={"cart-sharp"}
                 size={24}
                 color={"black"}
-                style={!focused ? styles.icon : styles.icon}
+                style={!focused ? styles.icon : styles.focusedIcon}
               />
             );
           },
