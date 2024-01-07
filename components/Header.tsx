@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -8,10 +8,14 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import tw from "twrnc";
 
 import SearchBar from "./SearchBar";
+import BottomSheet from "./BottomSheet";
 
 const Header = () => {
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
+
   return (
     <>
+      <BottomSheet />
       <View style={tw`flex-row pb-3 items-center mx-4 gap-2`}>
         <Ionicons name="fast-food" size={40} color="green" />
         <View style={tw`flex-1`}>

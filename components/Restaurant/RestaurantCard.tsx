@@ -30,7 +30,7 @@ const RestaurantCard = ({
         <Text style={tw`font-bold text-lg pt-2`}>{title}</Text>
         <View style={tw`flex-row items-center gap-2`}>
           <FontAwesome name="star-o" size={24} color="yellow" />
-          <Text style={`text-xs text-gray-500`}>
+          <Text style={tw`text-xs text-gray-500`}>
             <Text style={tw`text-yellow-700`}>{rating}</Text> - {genre}
           </Text>
         </View>

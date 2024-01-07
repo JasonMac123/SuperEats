@@ -1,4 +1,6 @@
 import React from "react";
+import { StyleSheet } from "react-native";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -8,27 +10,25 @@ import SearchScreen from "./SearchScreen";
 import ProfileScreen from "./ProfileScreen";
 import CartScreen from "./CartScreen";
 
-import tw from "twrnc";
-
 const Tab = createBottomTabNavigator();
-
-const screenOptions = {
-  tabBarShowLabel: false,
-  tabBarHideOnKeyboard: true,
-  headerShown: false,
-  tabBarStyle: {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-    left: 0,
-    elevation: 220,
-    height: 100,
-  },
-};
 
 const NavigationBar = () => {
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
+        headerShown: false,
+        tabBarStyle: {
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          left: 0,
+          elevation: 220,
+          height: 100,
+        },
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -39,7 +39,7 @@ const NavigationBar = () => {
                 name={focused ? "home" : "home-outline"}
                 size={24}
                 color={"black"}
-                style={!focused ? tw`opacity-20` : ""}
+                style={!focused ? styles.icon : styles.icon}
               />
             );
           },
@@ -55,7 +55,7 @@ const NavigationBar = () => {
                 name={"search"}
                 size={24}
                 color={"black"}
-                style={!focused ? tw`opacity-20` : ""}
+                style={!focused ? styles.icon : styles.icon}
               />
             );
           },
@@ -71,7 +71,7 @@ const NavigationBar = () => {
                 name={"user"}
                 size={24}
                 color={"black"}
-                style={!focused ? tw`opacity-20` : ""}
+                style={!focused ? styles.icon : styles.icon}
               />
             );
           },
@@ -87,7 +87,7 @@ const NavigationBar = () => {
                 name={"cart-sharp"}
                 size={24}
                 color={"black"}
-                style={!focused ? tw`opacity-20` : ""}
+                style={!focused ? styles.icon : styles.icon}
               />
             );
           },
@@ -96,5 +96,14 @@ const NavigationBar = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  icon: {
+    opacity: 0.2,
+  },
+  focusedIcon: {
+    opacity: 100,
+  },
+});
 
 export default NavigationBar;
