@@ -20,6 +20,13 @@ export default function RootLayoutNav() {
         <StatusBar style="auto" />
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="(modal)/filter"
+            options={{
+              headerTitle: "Search Filters",
+              presentation: "modal",
+            }}
+          />
         </Stack>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>

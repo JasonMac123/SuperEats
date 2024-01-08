@@ -17,7 +17,7 @@ const SearchBar = () => {
           keyboardType="default"
         />
       </View>
-      <Link href={""} asChild>
+      <Link href={"/(modal)/filter"} asChild>
         <TouchableOpacity>
           <Ionicons name="options-outline" size={24} color="black" />
         </TouchableOpacity>
