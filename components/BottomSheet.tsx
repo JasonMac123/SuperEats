@@ -34,8 +34,17 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
       overDragResistanceFactor={0}
       backdropComponent={renderBackdrop}
       backgroundStyle={{ borderRadius: 0, backgroundColor: "#F9F8F8" }}
+      handleIndicatorStyle={{ display: "none" }}
     >
       <View>
+        <View style={tw`flex-row justify-center items-center gap-8 mb-18`}>
+          <TouchableOpacity>
+            <Text>Delivery</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Pick-Up</Text>
+          </TouchableOpacity>
+        </View>
         <TouchableOpacity
           style={tw`bg-green-500 px-4 m-4 py-4 rounded-md items-center`}
           onPress={() => dismiss()}
