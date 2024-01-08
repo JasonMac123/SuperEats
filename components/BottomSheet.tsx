@@ -6,6 +6,8 @@ import {
   useBottomSheetModal,
 } from "@gorhom/bottom-sheet";
 import { View, Text } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Link } from "expo-router";
 
 import tw from "twrnc";
 
@@ -37,16 +39,40 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
       handleIndicatorStyle={{ display: "none" }}
     >
       <View>
-        <View style={tw`flex-row justify-center items-center gap-8 mb-18`}>
-          <TouchableOpacity>
-            <Text>Delivery</Text>
+        <View style={tw`flex-row justify-center items-center gap-8 mb-12`}>
+          <TouchableOpacity
+            style={tw`bg-green-700 items-center justify-center p-2 px-8 rounded-lg`}
+          >
+            <Text style={tw`text-white`}>Delivery</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity style={tw`text-green-700`}>
             <Text>Pick-Up</Text>
           </TouchableOpacity>
         </View>
+        <Text style={tw`text-lg font-semibold mx-8 mb-4`}>Your Location</Text>
+        <Link href={"/"} asChild>
+          <TouchableOpacity>
+            <View
+              style={tw`flex-row gap-8 items-center py-4 px-8 mb-4 bg-white shadow-md`}
+            >
+              <Ionicons name="location" size={24} color="black" />
+              <Text style={tw`flex-1`}>Use current location</Text>
+              <Ionicons name="chevron-forward" size={24} color="black" />
+            </View>
+          </TouchableOpacity>
+        </Link>
+        <Text style={tw`text-lg font-semibold mx-8 mb-4`}>Arrival Time</Text>
+        <TouchableOpacity>
+          <View
+            style={tw`flex-row gap-8 items-center py-4 px-8 mb-4 bg-white shadow-md`}
+          >
+            <Ionicons name="stopwatch" size={24} color="black" />
+            <Text style={tw`flex-1`}>Now</Text>
+            <Ionicons name="chevron-forward" size={24} color="black" />
+          </View>
+        </TouchableOpacity>
         <TouchableOpacity
-          style={tw`bg-green-500 px-4 m-4 py-4 rounded-md items-center`}
+          style={tw`bg-green-700 text-white px-4 m-4 py-4 rounded-md items-center`}
           onPress={() => dismiss()}
         >
           <Text style={tw`text-white font-bold`}>Confirm</Text>
