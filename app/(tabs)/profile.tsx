@@ -1,12 +1,12 @@
 import { SafeAreaView, Text } from "react-native";
 import React from "react";
 
-const CartScreen = () => {
+const Profile = () => {
   return (
     <SafeAreaView>
-      <Text>CartScreen</Text>
+      <Text>ProfileScreen</Text>
     </SafeAreaView>
   );
 };
 
-export default CartScreen;
+export default Profile;

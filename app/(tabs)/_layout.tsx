@@ -1,20 +1,14 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-import SearchScreen from "../screens/SearchScreen";
-import ProfileScreen from "../screens/ProfileScreen";
-import CartScreen from "../screens/CartScreen";
-import HomeScreen from "../app/HomeScreen";
+import { Tabs } from "expo-router";
 
-const Tab = createBottomTabNavigator();
-
-const NavigationBar = () => {
+const Layout = () => {
   return (
-    <Tab.Navigator
+    <Tabs
       screenOptions={{
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
@@ -29,9 +23,8 @@ const NavigationBar = () => {
         },
       }}
     >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+      <Tabs.Screen
+        name="home"
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -45,9 +38,8 @@ const NavigationBar = () => {
           },
         }}
       />
-      <Tab.Screen
-        name="Search"
-        component={SearchScreen}
+      <Tabs.Screen
+        name="search"
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -61,9 +53,8 @@ const NavigationBar = () => {
           },
         }}
       />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+      <Tabs.Screen
+        name="profile"
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -77,9 +68,8 @@ const NavigationBar = () => {
           },
         }}
       />
-      <Tab.Screen
-        name="Cart"
-        component={CartScreen}
+      <Tabs.Screen
+        name="cart"
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -93,7 +83,7 @@ const NavigationBar = () => {
           },
         }}
       />
-    </Tab.Navigator>
+    </Tabs>
   );
 };
 
@@ -106,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NavigationBar;
+export default Layout;

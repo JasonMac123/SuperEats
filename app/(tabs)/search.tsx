@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
 
-const SearchScreen = () => {
+const Search = () => {
   return (
     <SafeAreaView>
       <Text>SearchScreen</Text>
@@ -9,4 +9,4 @@ const SearchScreen = () => {
   );
 };
 
-export default SearchScreen;
+export default Search;

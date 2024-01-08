@@ -19,7 +19,7 @@ export default function RootLayoutNav() {
       <BottomSheetModalProvider>
         <StatusBar style="auto" />
         <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         </Stack>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
