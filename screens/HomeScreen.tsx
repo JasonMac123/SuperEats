@@ -4,8 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 
 import tw from "twrnc";
 
-import Header from "../components/Header";
-import Categories from "../components/Category/Categories";
+import Header from "../SuperEats/components/Header";
+import Categories from "../SuperEats/components/Category/Categories";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
