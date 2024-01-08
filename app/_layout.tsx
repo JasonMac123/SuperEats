@@ -1,7 +1,5 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -17,15 +15,13 @@ export default function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <BottomSheetModalProvider>
-          <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-          </Stack>
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <StatusBar style="auto" />
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+        </Stack>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }

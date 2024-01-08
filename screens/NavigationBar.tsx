@@ -5,10 +5,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-import HomeScreen from "./HomeScreen";
-import SearchScreen from "./SearchScreen";
-import ProfileScreen from "./ProfileScreen";
-import CartScreen from "./CartScreen";
+import SearchScreen from "../screens/SearchScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import CartScreen from "../screens/CartScreen";
+import HomeScreen from "../app/HomeScreen";
 
 const Tab = createBottomTabNavigator();
 
