@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import NavigationBar from "./screens/NavigationBar";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import FilterModal from "./components/FilterModal";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,18 @@ export default function App() {
               name="Bottom Navigation"
               component={NavigationBar}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="/(modal)/filter"
+              component={FilterModal}
+              options={{
+                presentation: "modal",
+                headerTitle: "Search filters",
+                headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: "#FFFFFF",
+                },
+              }}
             />
           </Stack.Navigator>
         </BottomSheetModalProvider>

@@ -1,6 +1,7 @@
 import { View, TextInput, TouchableOpacity } from "react-native";
 import React from "react";
 
+import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -16,9 +17,11 @@ const SearchBar = () => {
           keyboardType="default"
         />
       </View>
-      <TouchableOpacity>
-        <Ionicons name="options-outline" size={24} color="black" />
-      </TouchableOpacity>
+      <Link href={"/(modal)/filter"} asChild>
+        <TouchableOpacity>
+          <Ionicons name="options-outline" size={24} color="black" />
+        </TouchableOpacity>
+      </Link>
     </View>
   );
 };
