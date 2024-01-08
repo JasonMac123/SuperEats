@@ -33,10 +33,11 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
       snapPoints={snapPoints}
       overDragResistanceFactor={0}
       backdropComponent={renderBackdrop}
+      backgroundStyle={{ borderRadius: 0, backgroundColor: "#F9F8F8" }}
     >
       <View>
         <TouchableOpacity
-          style={tw`bg-green-500 px-4 py-2`}
+          style={tw`bg-green-500 px-4 m-4 py-4 rounded-md items-center`}
           onPress={() => dismiss()}
         >
           <Text style={tw`text-white font-bold`}>Confirm</Text>
