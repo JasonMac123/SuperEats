@@ -1,10 +1,11 @@
-import { Stack } from "expo-router";
+import { Stack, useNavigation } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { useColorScheme } from "react-native";
+import { TouchableOpacity, useColorScheme } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -13,6 +14,8 @@ export const unstable_settings = {
 
 export default function RootLayoutNav() {
   const colorScheme = useColorScheme();
+
+  const navigation = useNavigation();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -25,6 +28,19 @@ export default function RootLayoutNav() {
             options={{
               headerTitle: "Search Filters",
               presentation: "modal",
+              headerShadowVisible: false,
+              headerStyle: {
+                backgroundColor: "#FCFCFC",
+              },
+              headerLeft: () => (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.goBack();
+                  }}
+                >
+                  <Ionicons name="close-outline" size={28} color={"green"} />
+                </TouchableOpacity>
+              ),
             }}
           />
         </Stack>
