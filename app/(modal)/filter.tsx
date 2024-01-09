@@ -45,14 +45,14 @@ const FilterModal = () => {
 
   const renderItem: ListRenderItem<Category> = ({ item }) => {
     return (
-      <View>
+      <View style={tw`flex-row items-center pt-4 pl-4 bg-white`}>
         <Text>{item.name}</Text>
       </View>
     );
   };
 
   return (
-    <View style={tw`p-8 bg-white h-full`}>
+    <View style={tw`p-8 bg-gray-200 h-full`}>
       <FlatList
         data={filterItems}
         renderItem={renderItem}
