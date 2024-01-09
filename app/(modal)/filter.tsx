@@ -25,12 +25,13 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 interface Category {
   name: string;
   count: number;
+  id: string;
   checked?: boolean;
 }
 
 const FilterModal = () => {
   const navigation = useNavigation();
-  const [filterItems, setFilterItems] = useState([]);
+  const [filterItems, setFilterItems] = useState<Category[]>([]);
 
   useEffect(() => {
     let items: any = [];
@@ -40,7 +41,7 @@ const FilterModal = () => {
     getDocs(query(categorySnapshot, orderBy("name")))
       .then((data: any) => {
         data.forEach((doc: any) => {
-          items.push({ ...doc.data(), id: doc.id, isChecked: false });
+          items.push({ ...doc.data(), id: doc.id, checked: false });
         });
         setFilterItems(items);
       })
@@ -49,7 +50,17 @@ const FilterModal = () => {
       });
   }, []);
 
-  const renderItem: ListRenderItem<Category> = ({ item }) => {
+  const clearAllFilters = () => {
+    const updatedItems = filterItems.map((item) => {
+      item.checked = false;
+
+      return item;
+    });
+
+    setFilterItems(updatedItems);
+  };
+
+  const renderItem: ListRenderItem<Category> = ({ item, index }) => {
     return (
       <View
         style={tw`flex-row items-center justify-between py-2 pl-4 bg-white`}
@@ -60,6 +71,7 @@ const FilterModal = () => {
         <BouncyCheckbox
           fillColor="#15803d"
           unfillColor="#FFF"
+          disableBuiltInState
           iconStyle={{
             borderColor: "#15803d",
             borderRadius: 4,
@@ -69,6 +81,17 @@ const FilterModal = () => {
             borderColor: "#15803d",
             borderRadius: 4,
           }}
+          onPress={() => {
+            let updatedItems = filterItems.map((item: Category) => {
+              if (item.name === filterItems[index].name) {
+                item.checked = !filterItems[index].checked;
+              }
+              return item;
+            });
+
+            setFilterItems(updatedItems);
+          }}
+          isChecked={item.checked}
         />
       </View>
     );
@@ -80,6 +103,11 @@ const FilterModal = () => {
         data={filterItems}
         renderItem={renderItem}
         ListHeaderComponent={<ItemBox />}
+        ListFooterComponent={
+          <TouchableOpacity onPress={clearAllFilters}>
+            <Text>Clear Filters</Text>
+          </TouchableOpacity>
+        }
       />
       <View style={styles.footer}>
         <TouchableOpacity
