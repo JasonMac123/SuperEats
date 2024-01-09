@@ -6,12 +6,15 @@ import {
   FlatList,
   ListRenderItem,
 } from "react-native";
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "expo-router";
 
 import tw from "twrnc";
-import { Ionicons } from "@expo/vector-icons";
 import ItemBox from "../../components/ItemBox";
+import firebase_app from "../../firebase/config";
+
+import { getFirestore, getDocs, collection, orderBy } from "firebase/firestore";
 
 interface Category {
   name: string;
@@ -21,6 +24,24 @@ interface Category {
 
 const FilterModal = () => {
   const navigation = useNavigation();
+  const [filterItems, setFilterItems] = useState([]);
+
+  useEffect(() => {
+    let items: any = [];
+    const db = getFirestore(firebase_app);
+    const categorySnapshot = collection(db, "categories");
+
+    getDocs(categorySnapshot)
+      .then((data: any) => {
+        data.forEach((doc: any) => {
+          items.push({ ...doc.data(), id: doc.id });
+        });
+        setFilterItems(items);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  }, []);
 
   const renderItem: ListRenderItem<Category> = ({ item }) => {
     return (
@@ -31,9 +52,9 @@ const FilterModal = () => {
   };
 
   return (
-    <View style={tw`p-8 bg-white`}>
+    <View style={tw`p-8 bg-white h-full`}>
       <FlatList
-        data={[]}
+        data={filterItems}
         renderItem={renderItem}
         ListHeaderComponent={<ItemBox />}
       />
