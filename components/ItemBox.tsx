@@ -35,7 +35,7 @@ const ItemBox = () => {
           <Ionicons name="chevron-forward" size={20} />
         </TouchableOpacity>
       </View>
-      <Text style={tw`font-semibold text-xl`}>Categories</Text>
+      <Text style={tw`font-semibold text-xl mb-4`}>Categories</Text>
     </>
   );
 };
