@@ -3,9 +3,9 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  FlatList,
   ListRenderItem,
 } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 import {
   getFirestore,
   getDocs,
@@ -98,20 +98,25 @@ const FilterModal = () => {
   };
 
   return (
-    <View style={tw`p-8 bg-gray-200 h-full`}>
+    <View style={tw`p-8 bg-gray-200`}>
       <FlatList
+        showsVerticalScrollIndicator={false}
+        style={tw`mb-24`}
         data={filterItems}
         renderItem={renderItem}
         ListHeaderComponent={<ItemBox />}
         ListFooterComponent={
-          <TouchableOpacity onPress={clearAllFilters}>
-            <Text>Clear Filters</Text>
+          <TouchableOpacity
+            style={tw`bg-green-700 px-12 py-4 my-4 items-center rounded-md`}
+            onPress={clearAllFilters}
+          >
+            <Text style={tw`text-white`}>Clear Filters</Text>
           </TouchableOpacity>
         }
       />
       <View style={styles.footer}>
         <TouchableOpacity
-          style={tw`h-16 mx-4 items-center justify-center bg-green-700 rounded-md`}
+          style={tw`h-16 mx-4 mt-4 items-center justify-center bg-green-700 rounded-md`}
           onPress={() => navigation.goBack()}
         >
           <Text style={tw`text-white text-xl font-bold`}>Filter</Text>
