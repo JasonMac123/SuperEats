@@ -6,7 +6,13 @@ import {
   FlatList,
   ListRenderItem,
 } from "react-native";
-import { getFirestore, getDocs, collection, orderBy } from "firebase/firestore";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "expo-router";
 
@@ -31,7 +37,7 @@ const FilterModal = () => {
     const db = getFirestore(firebase_app);
     const categorySnapshot = collection(db, "categories");
 
-    getDocs(categorySnapshot)
+    getDocs(query(categorySnapshot, orderBy("name")))
       .then((data: any) => {
         data.forEach((doc: any) => {
           items.push({ ...doc.data(), id: doc.id, isChecked: false });
