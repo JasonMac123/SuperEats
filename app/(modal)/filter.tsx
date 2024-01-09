@@ -6,7 +6,7 @@ import {
   FlatList,
   ListRenderItem,
 } from "react-native";
-
+import { getFirestore, getDocs, collection, orderBy } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "expo-router";
 
@@ -14,7 +14,7 @@ import tw from "twrnc";
 import ItemBox from "../../components/ItemBox";
 import firebase_app from "../../firebase/config";
 
-import { getFirestore, getDocs, collection, orderBy } from "firebase/firestore";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 interface Category {
   name: string;
@@ -34,7 +34,7 @@ const FilterModal = () => {
     getDocs(categorySnapshot)
       .then((data: any) => {
         data.forEach((doc: any) => {
-          items.push({ ...doc.data(), id: doc.id });
+          items.push({ ...doc.data(), id: doc.id, isChecked: false });
         });
         setFilterItems(items);
       })
@@ -45,8 +45,25 @@ const FilterModal = () => {
 
   const renderItem: ListRenderItem<Category> = ({ item }) => {
     return (
-      <View style={tw`flex-row items-center pt-4 pl-4 bg-white`}>
-        <Text>{item.name}</Text>
+      <View
+        style={tw`flex-row items-center justify-between py-2 pl-4 bg-white`}
+      >
+        <Text style={tw`font-semibold text-lg`}>
+          {item.name} ({item.count})
+        </Text>
+        <BouncyCheckbox
+          fillColor="#15803d"
+          unfillColor="#FFF"
+          iconStyle={{
+            borderColor: "#15803d",
+            borderRadius: 4,
+            borderWidth: 1,
+          }}
+          innerIconStyle={{
+            borderColor: "#15803d",
+            borderRadius: 4,
+          }}
+        />
       </View>
     );
   };
