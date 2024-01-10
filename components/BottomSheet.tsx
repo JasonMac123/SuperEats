@@ -50,7 +50,7 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
           </TouchableOpacity>
         </View>
         <Text style={tw`text-lg font-semibold mx-8 mb-4`}>Your Location</Text>
-        <Link href={"/"} asChild>
+        <Link href={"/(modal)/search"} asChild>
           <TouchableOpacity>
             <View
               style={tw`flex-row gap-8 items-center py-4 px-8 mb-4 bg-white shadow-md`}
