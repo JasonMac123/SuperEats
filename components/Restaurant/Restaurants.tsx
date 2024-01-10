@@ -1,4 +1,5 @@
-import { Text, View, ScrollView, Image } from "react-native";
+import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
+import { Link } from "expo-router";
 import React, { useState, useEffect } from "react";
 
 import firebase_app from "../../firebase/config";
@@ -61,12 +62,16 @@ const Restaurants = () => {
       }}
     >
       {restaurantData.map((restaurant: Restaurant) => (
-        <View key={restaurant.name} style={tw`mx-1`}>
-          <Image source={restaurant.img} />
-          <Text style={tw`font-semibold text-sm text-center shadow-md`}>
-            {restaurant.name}
-          </Text>
-        </View>
+        <Link href={"/"} asChild>
+          <TouchableOpacity style={tw`bg-white`}>
+            <View key={restaurant.name} style={tw`mx-1 h-80 w-60`}>
+              <Image source={restaurant.img} />
+              <Text style={tw`font-semibold text-sm text-center shadow-md`}>
+                {restaurant.name}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </Link>
       ))}
     </ScrollView>
   );
