@@ -1,10 +1,12 @@
 import React, { useLayoutEffect } from "react";
-import { SafeAreaView, ScrollView } from "react-native";
+import { SafeAreaView, ScrollView, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import tw from "twrnc";
 
 import Header from "../../components/Header";
+import Categories from "../../components/Category/Categories";
+import Restaurants from "../../components/Restaurant/Restaurants";
 
 const Index = () => {
   const navigation = useNavigation();
@@ -21,7 +23,13 @@ const Index = () => {
       <ScrollView
         style={tw`bg-gray-100`}
         contentContainerStyle={{ paddingBottom: 100 }}
-      ></ScrollView>
+      >
+        <Categories />
+        <Text style={tw`font-semibold text-xl ml-4`}>Top picks near you!</Text>
+        <Restaurants />
+        <Text style={tw`font-semibold text-xl ml-4`}>Deals!</Text>
+        <Restaurants />
+      </ScrollView>
     </SafeAreaView>
   );
 };
