@@ -1,5 +1,15 @@
 import { Text, View, ScrollView, Image } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import firebase_app from "../../firebase/config";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 
 import tw from "twrnc";
 
@@ -9,6 +19,7 @@ interface Restaurant {
   lat: number;
   long: number;
   rating: number;
+  featured: boolean;
   meals: Meal[];
 }
 
@@ -20,6 +31,25 @@ interface Meal {
 
 const Restaurants = () => {
   const [restaurantData, setrestaurantData] = useState<Restaurant[]>([]);
+
+  useEffect(() => {
+    let items: any = [];
+    const db = getFirestore(firebase_app);
+    const restaurantSnapshot = collection(db, "restaurants");
+
+    getDocs(
+      query(restaurantSnapshot, where("featured", "==", true), orderBy("name"))
+    )
+      .then((data: any) => {
+        data.forEach((doc: any) => {
+          items.push({ ...doc.data(), id: doc.id });
+        });
+        setrestaurantData(items);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <ScrollView
