@@ -1,18 +1,18 @@
 export const categories = [
   {
     name: "Restaurants",
-    img: require("@/assets/images/restaurants.png"),
+    img: require("../images/restaurants.png"),
   },
   {
     name: "Groceries",
-    img: require("@/assets/images/groceries.png"),
+    img: require("../images/groceries.png"),
   },
   {
     name: "Offers",
-    img: require("@/assets/images/offers.png"),
+    img: require("../images/offers.png"),
   },
   {
     name: "Pickup",
-    img: require("@/assets/images/pickup.png"),
+    img: require("../images/pickup.png"),
   },
 ];

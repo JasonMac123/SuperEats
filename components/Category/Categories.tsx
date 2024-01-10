@@ -18,9 +18,9 @@ const Categories = () => {
       style={tw`gap-4`}
     >
       {categories.map((category: Category) => (
-        <View key={category.name} style={tw`mx-4 h-20 w-20`}>
+        <View key={category.name} style={tw`mx-1`}>
           <Image source={category.img} />
-          <Text style={tw`font-semibold text-md`}>{category.name}</Text>
+          <Text style={tw`font-semibold text-lg`}>{category.name}</Text>
         </View>
       ))}
     </ScrollView>
