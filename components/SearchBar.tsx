@@ -15,6 +15,7 @@ const SearchBar = () => {
         <TextInput
           placeholder="Search food places here!"
           keyboardType="default"
+          style={tw`w-full`}
         />
       </View>
       <Link href={"/(modal)/filter"} asChild>
