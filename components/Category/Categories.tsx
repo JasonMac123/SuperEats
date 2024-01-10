@@ -15,12 +15,17 @@ const Categories = () => {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      style={tw`gap-4`}
+      style={tw`gap-4 bg-white`}
+      contentContainerStyle={{
+        padding: 15,
+      }}
     >
       {categories.map((category: Category) => (
         <View key={category.name} style={tw`mx-1`}>
           <Image source={category.img} />
-          <Text style={tw`font-semibold text-lg`}>{category.name}</Text>
+          <Text style={tw`font-semibold text-sm text-center shadow-md`}>
+            {category.name}
+          </Text>
         </View>
       ))}
     </ScrollView>
