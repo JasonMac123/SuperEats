@@ -1,4 +1,4 @@
-const getDistanceCoordinates = (
+export const getDistanceCoordinates = (
   lat1: number,
   long1: number,
   lat2: number,

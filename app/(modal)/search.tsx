@@ -23,6 +23,11 @@ const search = () => {
     };
   });
 
+  const geocode = async (address: string) => {
+    const geocodedLocation = await Location.geocodeAsync(address);
+    setPosition(geocodedLocation[0].latitude, geocodedLocation[0].longitude);
+  };
+
   return (
     <View>
       <Text>search-location</Text>
