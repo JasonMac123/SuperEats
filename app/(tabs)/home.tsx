@@ -18,7 +18,7 @@ const Index = () => {
   }, []);
 
   return (
-    <SafeAreaView style={tw`bg-white pt-5`}>
+    <SafeAreaView style={tw`bg-neutral-200 pt-5`}>
       <Header />
       <ScrollView
         style={tw`bg-gray-100`}
