@@ -1,9 +1,6 @@
 import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import React, { useState, useEffect } from "react";
-
-import { Entypo } from "@expo/vector-icons";
-
 import firebase_app from "../../firebase/config";
 import {
   getFirestore,
@@ -14,23 +11,8 @@ import {
 } from "firebase/firestore";
 
 import tw from "twrnc";
-
-interface Restaurant {
-  name: string;
-  img: any;
-  lat: number;
-  long: number;
-  rating: number;
-  numberOfRatings: number;
-  featured: boolean;
-  meals: Meal[];
-}
-
-interface Meal {
-  name: string;
-  price: number;
-  img: any;
-}
+import { Restaurant } from "../../constants/types";
+import RestaurantCard from "./RestaurantCard";
 
 const Restaurants = () => {
   const [restaurantData, setrestaurantData] = useState<Restaurant[]>([]);
@@ -62,23 +44,7 @@ const Restaurants = () => {
       }}
     >
       {restaurantData.map((restaurant: Restaurant) => (
-        <Link href={"/"} asChild>
-          <TouchableOpacity style={tw`bg-white`}>
-            <View key={restaurant.name} style={tw`mx-1 h-80 w-60`}>
-              <Image source={restaurant.img} />
-              <View>
-                <Text style={tw`font-semibold text-sm text-center shadow-md`}>
-                  {restaurant.name}
-                </Text>
-                <Text style={tw`font-semibold text-sm text-center shadow-md`}>
-                  {restaurant.rating}{" "}
-                  <Entypo name="star" size={24} color="yellow" /> (
-                  {restaurant.numberOfRatings})
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </Link>
+        <RestaurantCard key={restaurant.id} data={restaurant} />
       ))}
     </ScrollView>
   );
