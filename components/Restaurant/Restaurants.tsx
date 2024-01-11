@@ -2,12 +2,13 @@ import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import React, { useState, useEffect } from "react";
 
+import { Entypo } from "@expo/vector-icons";
+
 import firebase_app from "../../firebase/config";
 import {
   getFirestore,
   getDocs,
   collection,
-  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -20,6 +21,7 @@ interface Restaurant {
   lat: number;
   long: number;
   rating: number;
+  numberOfRatings: number;
   featured: boolean;
   meals: Meal[];
 }
@@ -38,9 +40,7 @@ const Restaurants = () => {
     const db = getFirestore(firebase_app);
     const restaurantSnapshot = collection(db, "restaurants");
 
-    getDocs(
-      query(restaurantSnapshot, where("featured", "==", true), orderBy("name"))
-    )
+    getDocs(query(restaurantSnapshot, where("featured", "==", true)))
       .then((data: any) => {
         data.forEach((doc: any) => {
           items.push({ ...doc.data(), id: doc.id });
@@ -66,9 +66,16 @@ const Restaurants = () => {
           <TouchableOpacity style={tw`bg-white`}>
             <View key={restaurant.name} style={tw`mx-1 h-80 w-60`}>
               <Image source={restaurant.img} />
-              <Text style={tw`font-semibold text-sm text-center shadow-md`}>
-                {restaurant.name}
-              </Text>
+              <View>
+                <Text style={tw`font-semibold text-sm text-center shadow-md`}>
+                  {restaurant.name}
+                </Text>
+                <Text style={tw`font-semibold text-sm text-center shadow-md`}>
+                  {restaurant.rating}{" "}
+                  <Entypo name="star" size={24} color="yellow" /> (
+                  {restaurant.numberOfRatings})
+                </Text>
+              </View>
             </View>
           </TouchableOpacity>
         </Link>
