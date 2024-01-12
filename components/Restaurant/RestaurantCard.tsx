@@ -19,9 +19,15 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
 
   return (
     <Link href={"/"} asChild>
-      <TouchableOpacity style={tw`bg-white`}>
-        <View key={data.name} style={tw`mx-1 h-80 w-60`}>
-          <Image source={{ uri: data.img }} />
+      <TouchableOpacity>
+        <View
+          key={data.name}
+          style={tw`mx-1 h-auto w-auto p-4 shadow-md bg-white`}
+        >
+          <Image
+            source={{ uri: data.img }}
+            style={{ width: 250, height: 150 }}
+          />
           <View>
             <Text style={tw`font-semibold text-lg shadow-md`}>{data.name}</Text>
             <Text style={tw`font-semibold shadow-md`}>

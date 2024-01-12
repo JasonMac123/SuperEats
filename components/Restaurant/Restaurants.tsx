@@ -38,7 +38,7 @@ const Restaurants = () => {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      style={tw`gap-4 bg-white`}
+      style={tw`gap-4`}
       contentContainerStyle={{
         padding: 15,
       }}
