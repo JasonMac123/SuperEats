@@ -23,10 +23,8 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
         <View key={data.name} style={tw`mx-1 h-80 w-60`}>
           <Image source={data.img} />
           <View>
-            <Text style={tw`font-semibold text-sm text-center shadow-md`}>
-              {data.name}
-            </Text>
-            <Text style={tw`font-semibold text-sm text-center shadow-md`}>
+            <Text style={tw`font-semibold text-lg shadow-md`}>{data.name}</Text>
+            <Text style={tw`font-semibold shadow-md`}>
               {data.rating}
               <Entypo name="star" size={24} color="yellow" /> (
               {data.numberOfRatings})
