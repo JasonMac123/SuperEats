@@ -34,8 +34,6 @@ const Restaurants = () => {
       });
   }, []);
 
-  console.log(restaurantData);
-
   return (
     <ScrollView
       horizontal
