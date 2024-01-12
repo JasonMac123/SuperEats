@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { TouchableOpacity, useColorScheme } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export const unstable_settings = {
@@ -13,8 +13,6 @@ export const unstable_settings = {
 };
 
 export default function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   const navigation = useNavigation();
 
   return (

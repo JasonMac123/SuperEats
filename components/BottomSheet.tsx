@@ -7,7 +7,8 @@ import {
 } from "@gorhom/bottom-sheet";
 import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Link } from "expo-router";
+
+import UserPosition from "./UserPosition";
 
 import tw from "twrnc";
 
@@ -50,17 +51,7 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
           </TouchableOpacity>
         </View>
         <Text style={tw`text-lg font-semibold mx-8 mb-4`}>Your Location</Text>
-        <Link href={"/(modal)/search"} asChild>
-          <TouchableOpacity>
-            <View
-              style={tw`flex-row gap-8 items-center py-4 px-8 mb-4 bg-white shadow-md`}
-            >
-              <Ionicons name="location" size={24} color="black" />
-              <Text style={tw`flex-1`}>Use current location</Text>
-              <Ionicons name="chevron-forward" size={24} color="black" />
-            </View>
-          </TouchableOpacity>
-        </Link>
+        <UserPosition />
         <Text style={tw`text-lg font-semibold mx-8 mb-4`}>Arrival Time</Text>
         <TouchableOpacity>
           <View
