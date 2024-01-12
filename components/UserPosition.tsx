@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 
-import usePosition from "../../hooks/usePosition";
+import usePosition from "../hooks/usePosition";
 import * as Location from "expo-location";
 
-const search = () => {
+const UserPosition = () => {
   const { latitude, longitude, setPosition } = usePosition();
   const [permissions, setPermissions] = useState<boolean>(false);
 
@@ -35,4 +35,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default UserPosition;
