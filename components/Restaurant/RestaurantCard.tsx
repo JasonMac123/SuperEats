@@ -4,6 +4,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { Link } from "expo-router";
 
+import usePosition from "../../hooks/usePosition";
 import { Restaurant } from "../../constants/types";
 
 interface RestaurantProps {
@@ -11,8 +12,11 @@ interface RestaurantProps {
 }
 
 import tw from "twrnc";
+import { getDistanceCoordinates } from "../../functions/getDistance";
 
 const RestaurantCard = ({ data }: RestaurantProps) => {
+  const { latitude, longitude } = usePosition();
+
   return (
     <Link href={"/"} asChild>
       <TouchableOpacity style={tw`bg-white`}>
@@ -26,6 +30,16 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
               {data.rating}
               <Entypo name="star" size={24} color="yellow" /> (
               {data.numberOfRatings})
+            </Text>
+            <Text>
+              {latitude && longitude
+                ? `${getDistanceCoordinates(
+                    latitude,
+                    longitude,
+                    data.lat,
+                    data.long
+                  )}`
+                : `${data.address}`}
             </Text>
           </View>
         </View>
