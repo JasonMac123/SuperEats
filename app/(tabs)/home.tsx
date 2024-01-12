@@ -28,7 +28,7 @@ const Index = () => {
           contentContainerStyle={{ paddingBottom: 100 }}
         >
           <Categories />
-          <Text style={tw`font-semibold text-xl ml-4`}>
+          <Text style={tw`font-semibold text-xl mt-2 ml-4`}>
             Top picks near you!
           </Text>
           <Restaurants />
