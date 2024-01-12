@@ -20,7 +20,7 @@ const Restaurants = () => {
   useEffect(() => {
     let items: any = [];
     const db = getFirestore(firebase_app);
-    const restaurantSnapshot = collection(db, "restaurants");
+    const restaurantSnapshot = collection(db, "restuarants");
 
     getDocs(query(restaurantSnapshot, where("featured", "==", true)))
       .then((data: any) => {
@@ -33,6 +33,8 @@ const Restaurants = () => {
         console.log(error);
       });
   }, []);
+
+  console.log(restaurantData);
 
   return (
     <ScrollView
