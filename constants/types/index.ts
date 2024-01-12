@@ -1,10 +1,11 @@
 export interface Restaurant {
   name: string;
   id: string;
-  img: any;
+  img: string;
   lat: number;
   long: number;
   rating: number;
+  address: string;
   numberOfRatings: number;
   minDeliveryTime: number;
   maxDeliveryTime: number;
