@@ -42,7 +42,7 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
                     longitude,
                     data.lat,
                     data.long
-                  )}`
+                  )} Km away`
                 : `${data.address}`}
             </Text>
           </View>
