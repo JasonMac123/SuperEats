@@ -9,24 +9,8 @@ import { AntDesign } from "@expo/vector-icons";
 import tw from "twrnc";
 
 const UserPosition = () => {
-  const { latitude, longitude, setPosition } = usePosition();
-  const [permissions, setPermissions] = useState<boolean>(false);
-
-  useEffect(() => {
-    const getPermissions = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        return;
-      }
-      setPermissions(true);
-      let currentPosition = await Location.getCurrentPositionAsync({});
-      setPosition(
-        currentPosition.coords.latitude,
-        currentPosition.coords.longitude
-      );
-    };
-    getPermissions();
-  });
+  const { setPosition } = usePosition();
+  const [address, setAddress] = useState("");
 
   const geocode = async (address: string) => {
     const geocodedLocation = await Location.geocodeAsync(address);
@@ -39,11 +23,12 @@ const UserPosition = () => {
       <View style={tw`flex-row bg-neutral-200 py-4 px-4 items-center mx-8`}>
         <TextInput
           placeholder="Enter your address"
+          onChangeText={(text) => setAddress(text)}
           keyboardType="default"
           placeholderTextColor={"#000"}
           style={tw`flex-1 font-semibold`}
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => geocode(address)}>
           <AntDesign name="arrowright" size={24} color="black" />
         </TouchableOpacity>
       </View>
