@@ -15,7 +15,7 @@ import tw from "twrnc";
 export type Ref = BottomSheetModal;
 
 const BottomSheet = forwardRef<Ref>((props, ref) => {
-  const snapPoints = useMemo(() => ["55%"], []);
+  const snapPoints = useMemo(() => ["70%"], []);
 
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -63,7 +63,7 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          style={tw`bg-green-700 text-white px-4 m-4 py-4 rounded-md items-center`}
+          style={tw`bg-green-700 text-white px-4 m-4 mt-32 py-4 rounded-md items-center`}
           onPress={() => dismiss()}
         >
           <Text style={tw`text-white font-bold`}>Confirm</Text>
