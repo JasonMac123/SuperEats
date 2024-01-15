@@ -42,6 +42,26 @@ export default function RootLayoutNav() {
               ),
             }}
           />
+          <Stack.Screen
+            name="/restaurant/[restaurantId]"
+            options={{
+              headerShown: false,
+              presentation: "modal",
+              headerShadowVisible: false,
+              headerStyle: {
+                backgroundColor: "#FCFCFC",
+              },
+              headerLeft: () => (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.goBack();
+                  }}
+                >
+                  <Ionicons name="close-outline" size={28} color={"green"} />
+                </TouchableOpacity>
+              ),
+            }}
+          />
         </Stack>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>

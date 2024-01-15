@@ -18,7 +18,13 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
   const { latitude, longitude } = usePosition();
 
   return (
-    <Link href={"/"} asChild>
+    <Link
+      href={{
+        pathname: "/restaurant/[restaurantId]",
+        params: { restaurantId: data.id },
+      }}
+      asChild
+    >
       <TouchableOpacity>
         <View
           key={data.name}
