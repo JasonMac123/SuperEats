@@ -22,7 +22,7 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
       <TouchableOpacity>
         <View
           key={data.name}
-          style={tw`mx-1 h-auto w-auto p-4 shadow-md bg-white`}
+          style={tw`mx-1 h-auto w-auto p-2 shadow-md bg-white`}
         >
           <Image
             source={{ uri: data.img }}
@@ -30,13 +30,19 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
           />
           <View style={tw`flex-row justify-between`}>
             <View>
-              <Text style={tw`font-semibold text-lg shadow-md`}>
-                {data.name}
-              </Text>
-              <Text>${data.fee} fee</Text>
+              <View style={tw`flex-row justify-between items-center`}>
+                <Text style={tw`font-semibold text-lg shadow-md`}>
+                  {data.name}
+                </Text>
+                <Text style={tw`font-semibold`}>
+                  {data.rating}
+                  <Entypo name="star" size={16} color="green" /> (
+                  {data.numberOfRatings})
+                </Text>
+              </View>
               <Text>
-                {data.minDeliveryTime} - {data.maxDeliveryTime} minutes delivery
-                time.
+                ${data.fee} fee, {data.minDeliveryTime} - {data.maxDeliveryTime}{" "}
+                min delivery time.
               </Text>
               <Text>
                 {latitude && longitude
@@ -49,11 +55,6 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
                   : `${data.address}`}
               </Text>
             </View>
-            <Text style={tw`font-semibold shadow-md`}>
-              {data.rating}
-              <Entypo name="star" size={24} color="yellow" /> (
-              {data.numberOfRatings})
-            </Text>
           </View>
         </View>
       </TouchableOpacity>
