@@ -40,6 +40,7 @@ const UserPosition = () => {
         <TextInput
           placeholder="Enter your address"
           keyboardType="default"
+          placeholderTextColor={"#000"}
           style={tw`flex-1 font-semibold`}
         />
         <TouchableOpacity>
