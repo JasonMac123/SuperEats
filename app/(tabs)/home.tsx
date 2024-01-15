@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { SafeAreaView, ScrollView, Text } from "react-native";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import tw from "twrnc";
@@ -21,7 +21,7 @@ const Index = () => {
   return (
     <>
       <StatusBar style="dark" />
-      <SafeAreaView style={tw`bg-white pt-5`}>
+      <SafeAreaView style={tw`bg-white pt-5 flex-1`}>
         <Header />
         <Categories />
         <ScrollView

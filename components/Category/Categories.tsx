@@ -23,7 +23,7 @@ const Categories = () => {
       {categories.map((category: Category) => (
         <View key={category.name} style={tw`mx-1`}>
           <Image source={category.img} />
-          <Text style={tw`font-semibold text-sm text-center shadow-md`}>
+          <Text style={tw`font-semibold text-sm text-center shadow-md mb-4`}>
             {category.name}
           </Text>
         </View>
