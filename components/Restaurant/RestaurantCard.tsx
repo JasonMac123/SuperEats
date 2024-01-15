@@ -33,6 +33,7 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
               <Text style={tw`font-semibold text-lg shadow-md`}>
                 {data.name}
               </Text>
+              <Text>${data.fee} fee</Text>
               <Text>
                 {data.minDeliveryTime} - {data.maxDeliveryTime} minutes delivery
                 time.

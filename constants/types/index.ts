@@ -5,6 +5,7 @@ export interface Restaurant {
   lat: number;
   long: number;
   rating: number;
+  fee: number;
   address: string;
   numberOfRatings: number;
   minDeliveryTime: number;
