@@ -23,11 +23,11 @@ const Index = () => {
       <StatusBar style="dark" />
       <SafeAreaView style={tw`bg-white pt-5`}>
         <Header />
+        <Categories />
         <ScrollView
           style={tw`bg-gray-100`}
           contentContainerStyle={{ paddingBottom: 100 }}
         >
-          <Categories />
           <Text style={tw`font-semibold text-xl mt-2 ml-4`}>
             Top picks near you!
           </Text>
