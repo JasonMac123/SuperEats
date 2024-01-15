@@ -21,6 +21,7 @@ const UserPosition = () => {
         currentPosition.coords.longitude
       );
     };
+    getPermissions();
   });
 
   const geocode = async (address: string) => {
