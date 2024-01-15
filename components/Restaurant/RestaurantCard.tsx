@@ -28,22 +28,26 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
             source={{ uri: data.img }}
             style={{ width: 250, height: 150 }}
           />
-          <View>
-            <Text style={tw`font-semibold text-lg shadow-md`}>{data.name}</Text>
+          <View style={tw`flex-row justify-between`}>
+            <View>
+              <Text style={tw`font-semibold text-lg shadow-md`}>
+                {data.name}
+              </Text>
+              <Text>
+                {latitude && longitude
+                  ? `${getDistanceCoordinates(
+                      latitude,
+                      longitude,
+                      data.lat,
+                      data.long
+                    )} Km away`
+                  : `${data.address}`}
+              </Text>
+            </View>
             <Text style={tw`font-semibold shadow-md`}>
               {data.rating}
               <Entypo name="star" size={24} color="yellow" /> (
               {data.numberOfRatings})
-            </Text>
-            <Text>
-              {latitude && longitude
-                ? `${getDistanceCoordinates(
-                    latitude,
-                    longitude,
-                    data.lat,
-                    data.long
-                  )} Km away`
-                : `${data.address}`}
             </Text>
           </View>
         </View>
