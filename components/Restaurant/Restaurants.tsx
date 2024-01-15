@@ -1,33 +1,36 @@
-import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
-import { Link } from "expo-router";
+import { ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import firebase_app from "../../firebase/config";
-import {
-  getFirestore,
-  getDocs,
-  collection,
-  query,
-  where,
-} from "firebase/firestore";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 import tw from "twrnc";
 import { Restaurant } from "../../constants/types";
 import RestaurantCard from "./RestaurantCard";
 
-const Restaurants = () => {
+interface RestaurantProps {
+  featured?: boolean;
+}
+
+const Restaurants = ({ featured }: RestaurantProps) => {
   const [restaurantData, setrestaurantData] = useState<Restaurant[]>([]);
+  const [featuredData, setFeaturedData] = useState<Restaurant[]>([]);
 
   useEffect(() => {
-    let items: any = [];
+    let restaurants: Restaurant[] = [];
     const db = getFirestore(firebase_app);
     const restaurantSnapshot = collection(db, "restuarants");
 
-    getDocs(query(restaurantSnapshot, where("featured", "==", true)))
+    getDocs(restaurantSnapshot)
       .then((data: any) => {
         data.forEach((doc: any) => {
-          items.push({ ...doc.data(), id: doc.id });
+          restaurants.push({ ...doc.data(), id: doc.id });
         });
-        setrestaurantData(items);
+        const filtered = restaurants.filter(
+          (restaurant) => restaurant.featured
+        );
+
+        setrestaurantData(restaurants);
+        setFeaturedData(filtered);
       })
       .catch((error: any) => {
         console.log(error);
@@ -43,9 +46,19 @@ const Restaurants = () => {
         padding: 15,
       }}
     >
-      {restaurantData.map((restaurant: Restaurant) => (
-        <RestaurantCard key={restaurant.id} data={restaurant} />
-      ))}
+      {featured ? (
+        <>
+          {featuredData.map((restaurant: Restaurant) => (
+            <RestaurantCard key={restaurant.id} data={restaurant} />
+          ))}
+        </>
+      ) : (
+        <>
+          {restaurantData.map((restaurant: Restaurant) => (
+            <RestaurantCard key={restaurant.id} data={restaurant} />
+          ))}
+        </>
+      )}
     </ScrollView>
   );
 };

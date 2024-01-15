@@ -31,7 +31,7 @@ const Index = () => {
           <Text style={tw`font-semibold text-xl mt-2 ml-4`}>
             Top picks near you!
           </Text>
-          <Restaurants />
+          <Restaurants featured />
           <Text style={tw`font-semibold text-xl ml-4`}>Deals!</Text>
           <Restaurants />
         </ScrollView>
