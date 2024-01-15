@@ -34,6 +34,10 @@ const RestaurantCard = ({ data }: RestaurantProps) => {
                 {data.name}
               </Text>
               <Text>
+                {data.minDeliveryTime} - {data.maxDeliveryTime} minutes delivery
+                time.
+              </Text>
+              <Text>
                 {latitude && longitude
                   ? `${getDistanceCoordinates(
                       latitude,
