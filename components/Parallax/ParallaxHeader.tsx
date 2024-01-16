@@ -1,13 +1,22 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 
 import ParallaxScrollView from "./ParallaxScrollView";
+import { useNavigation } from "expo-router";
 
 interface ParallaxHeaderProps {
   img: string;
 }
 
 const ParallaxHeader = ({ img }: ParallaxHeaderProps) => {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTransparent: true,
+    });
+  });
+
   return (
     <ParallaxScrollView
       backgroundColor={"#fff"}

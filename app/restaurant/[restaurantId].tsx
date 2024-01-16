@@ -12,7 +12,7 @@ const RestaurantIdPage = () => {
   const { restaurantId } = useLocalSearchParams();
   const id = restaurantId as string;
 
-  const [restaurantData, setRestaurantData] = useState<Restaurant | Object>({});
+  const [restaurantData, setRestaurantData] = useState<Restaurant>();
 
   useEffect(() => {
     const db = getFirestore(firebase_app);
@@ -33,7 +33,7 @@ const RestaurantIdPage = () => {
   return (
     <>
       <StatusBar style="dark" />
-      <ParallaxHeader />
+      <ParallaxHeader img={restaurantData.img} />
       <SafeAreaView></SafeAreaView>
     </>
   );
