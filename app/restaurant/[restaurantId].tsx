@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SplashScreen, useLocalSearchParams } from "expo-router";
 import { Restaurant } from "../../constants/types";
@@ -6,6 +6,7 @@ import { Restaurant } from "../../constants/types";
 import firebase_app from "../../firebase/config";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { StatusBar } from "expo-status-bar";
+import ParallaxHeader from "../../components/Parallax/ParallaxHeader";
 
 const RestaurantIdPage = () => {
   const { restaurantId } = useLocalSearchParams();
@@ -32,9 +33,8 @@ const RestaurantIdPage = () => {
   return (
     <>
       <StatusBar style="dark" />
-      <SafeAreaView>
-        <Text>[restaurantId]</Text>
-      </SafeAreaView>
+      <ParallaxHeader />
+      <SafeAreaView></SafeAreaView>
     </>
   );
 };
