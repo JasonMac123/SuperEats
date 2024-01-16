@@ -1,10 +1,11 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SplashScreen, useLocalSearchParams } from "expo-router";
 import { Restaurant } from "../../constants/types";
 
 import firebase_app from "../../firebase/config";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
+import { StatusBar } from "expo-status-bar";
 
 const RestaurantIdPage = () => {
   const { restaurantId } = useLocalSearchParams();
@@ -29,9 +30,12 @@ const RestaurantIdPage = () => {
   }
 
   return (
-    <View>
-      <Text>[restaurantId]</Text>
-    </View>
+    <>
+      <StatusBar style="dark" />
+      <SafeAreaView>
+        <Text>[restaurantId]</Text>
+      </SafeAreaView>
+    </>
   );
 };
 
