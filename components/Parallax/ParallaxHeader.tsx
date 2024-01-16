@@ -1,19 +1,26 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
 
 import ParallaxScrollView from "./ParallaxScrollView";
 
-const ParallaxHeader = () => {
+interface ParallaxHeaderProps {
+  img: string;
+}
+
+const ParallaxHeader = ({ img }: ParallaxHeaderProps) => {
   return (
     <ParallaxScrollView
-      backgroundColor={"red"}
+      backgroundColor={"#fff"}
       parallaxHeaderHeight={300}
+      stickyHeaderHeight={50}
       style={{ flex: 1 }}
-    >
-      <View style={{ height: 500 }}>
-        <Text>Scroll me</Text>
-      </View>
-    </ParallaxScrollView>
+      renderBackground={() => <Image source={{ uri: img }} />}
+      renderStickyHeader={() => (
+        <View key="sticky-header">
+          <Text>Details</Text>
+        </View>
+      )}
+    ></ParallaxScrollView>
   );
 };
 
