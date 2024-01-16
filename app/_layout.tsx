@@ -43,10 +43,10 @@ export default function RootLayoutNav() {
             }}
           />
           <Stack.Screen
-            name="/restaurant/[restaurantId]"
+            name="restaurant/[restaurantId]"
             options={{
               headerShown: false,
-              presentation: "modal",
+              presentation: "card",
               headerShadowVisible: false,
               headerStyle: {
                 backgroundColor: "#FCFCFC",
