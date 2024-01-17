@@ -37,10 +37,7 @@ const RestaurantIdPage = () => {
   return (
     <>
       <StatusBar style="dark" />
-      <ParallaxHeader img={restaurantData.img} />
-      <SafeAreaView>
-        <Text>Hello world</Text>
-      </SafeAreaView>
+      <ParallaxHeader img={restaurantData.img} name={restaurantData.name} />
     </>
   );
 };
