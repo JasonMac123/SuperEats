@@ -1,12 +1,13 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, SectionList } from "react-native";
 import React, { useLayoutEffect } from "react";
 
 import ParallaxScrollView from "./ParallaxScrollView";
 import { useNavigation } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-import tw from "twrnc";
 import { Restaurant } from "../../constants/types";
+
+import tw from "twrnc";
 
 interface ParallaxHeaderProps {
   data: Restaurant;
@@ -59,7 +60,25 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           <Text style={tw`text-2xl mt-14`}>{data.name}</Text>
         </View>
       )}
-    ></ParallaxScrollView>
+    >
+      <View>
+        <Text style={tw`text-2xl`}>{data.name}</Text>
+        <Text style={tw`text-neutral-600`}>{data.description}</Text>
+        <SectionList
+          sections={}
+          keyExtractor={(item, index) => item + index}
+          renderItem={({ item }) => (
+            <View>
+              <Text style={tw`text-neutral-700`}>{item}</Text>
+              <Text style={tw`text-neutral-700`}>{item}</Text>
+            </View>
+          )}
+          renderSectionHeader={({ section: { title } }) => (
+            <Text style={tw`text-2xl font-semibold`}>{title}</Text>
+          )}
+        />
+      </View>
+    </ParallaxScrollView>
   );
 };
 
