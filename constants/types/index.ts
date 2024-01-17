@@ -16,6 +16,11 @@ export interface Restaurant {
 }
 
 export interface Meal {
+  categoryName: string;
+  foodItems: FoodItem[];
+}
+
+export interface FoodItem {
   name: string;
   price: number;
   info: string;
