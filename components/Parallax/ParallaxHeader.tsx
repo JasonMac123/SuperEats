@@ -27,7 +27,7 @@ const ParallaxHeader = ({ img }: ParallaxHeaderProps) => {
           <Ionicons name="arrow-back" color="#15803d" size={24} />
         </TouchableOpacity>
       ),
-      headerRight: () => {
+      headerRight: () => (
         <View style={tw`flex-row items-center justify-center gap-4`}>
           <TouchableOpacity
             style={tw`w-12 h-12 rounded-full bg-white justify-center items-center`}
@@ -39,8 +39,8 @@ const ParallaxHeader = ({ img }: ParallaxHeaderProps) => {
           >
             <Ionicons name="search-outline" color="#15803d" size={24} />
           </TouchableOpacity>
-        </View>;
-      },
+        </View>
+      ),
     });
   });
 
@@ -50,12 +50,10 @@ const ParallaxHeader = ({ img }: ParallaxHeaderProps) => {
       parallaxHeaderHeight={300}
       stickyHeaderHeight={50}
       style={{ flex: 1 }}
-      renderBackground={() => <Image source={{ uri: img }} />}
-      renderStickyHeader={() => (
-        <View key="sticky-header">
-          <Text>Details</Text>
-        </View>
+      renderBackground={() => (
+        <Image source={{ uri: img }} style={{ width: 400, height: 500 }} />
       )}
+      renderStickyHeader={() => <View key="sticky-header"></View>}
     ></ParallaxScrollView>
   );
 };
