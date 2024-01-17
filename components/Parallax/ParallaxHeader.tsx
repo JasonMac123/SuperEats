@@ -16,6 +16,12 @@ interface ParallaxHeaderProps {
 const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
   const navigation = useNavigation();
 
+  const sectionData = data.meals.map((item, index) => ({
+    title: item.categoryName,
+    data: item.foodItems,
+    index,
+  }));
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
@@ -65,12 +71,11 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
         <Text style={tw`text-2xl`}>{data.name}</Text>
         <Text style={tw`text-neutral-600`}>{data.description}</Text>
         <SectionList
-          sections={}
-          keyExtractor={(item, index) => item + index}
+          sections={sectionData}
           renderItem={({ item }) => (
             <View>
-              <Text style={tw`text-neutral-700`}>{item}</Text>
-              <Text style={tw`text-neutral-700`}>{item}</Text>
+              <Text style={tw`text-neutral-700`}>{item.name}</Text>
+              <Text style={tw`text-neutral-700`}>{item.price}</Text>
             </View>
           )}
           renderSectionHeader={({ section: { title } }) => (
