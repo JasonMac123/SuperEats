@@ -37,7 +37,7 @@ const RestaurantIdPage = () => {
   return (
     <>
       <StatusBar style="dark" />
-      <ParallaxHeader img={restaurantData.img} name={restaurantData.name} />
+      <ParallaxHeader data={restaurantData} />
     </>
   );
 };

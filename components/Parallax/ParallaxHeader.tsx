@@ -6,13 +6,13 @@ import { useNavigation } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import tw from "twrnc";
+import { Restaurant } from "../../constants/types";
 
 interface ParallaxHeaderProps {
-  img: string;
-  name: string;
+  data: Restaurant;
 }
 
-const ParallaxHeader = ({ img, name }: ParallaxHeaderProps) => {
+const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -52,11 +52,11 @@ const ParallaxHeader = ({ img, name }: ParallaxHeaderProps) => {
       stickyHeaderHeight={110}
       style={{ flex: 1 }}
       renderBackground={() => (
-        <Image source={{ uri: img }} style={{ width: 400, height: 500 }} />
+        <Image source={{ uri: data.img }} style={{ width: 400, height: 500 }} />
       )}
       renderStickyHeader={() => (
         <View key="sticky-header" style={tw`ml-20`}>
-          <Text style={tw`text-2xl mt-14`}>{name}</Text>
+          <Text style={tw`text-2xl mt-14`}>{data.name}</Text>
         </View>
       )}
     ></ParallaxScrollView>
