@@ -74,8 +74,14 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           sections={sectionData}
           renderItem={({ item }) => (
             <View>
-              <Text style={tw`text-neutral-700`}>{item.name}</Text>
-              <Text style={tw`text-neutral-700`}>{item.price}</Text>
+              <View>
+                <Text style={tw`text-neutral-700 text-xl`}>
+                  {item.name}
+                  <Text style={tw`text-neutral-500 text-lg`}>{item.price}</Text>
+                </Text>
+                <Text style={tw`text-neutral-400`}>{item.info}</Text>
+              </View>
+              <Image source={{ uri: item.img }} />
             </View>
           )}
           renderSectionHeader={({ section: { title } }) => (
