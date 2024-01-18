@@ -87,7 +87,17 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
             </View>
           )}
           renderSectionHeader={({ section: { title } }) => (
-            <Text style={tw`text-2xl font-semibold`}>{title}</Text>
+            <View
+              style={{
+                borderBottomColor: "#000",
+                borderBottomWidth: 10,
+                paddingBottom: 8,
+                paddingHorizontal: 8,
+                marginBottom: 10,
+              }}
+            >
+              <Text style={tw`text-2xl font-semibold`}>{title}</Text>
+            </View>
           )}
         />
       </View>
