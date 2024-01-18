@@ -71,6 +71,8 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
         <Text style={tw`text-2xl`}>{data.name}</Text>
         <Text style={tw`text-neutral-600`}>{data.description}</Text>
         <SectionList
+          keyExtractor={(item, index) => `${item.name + index}`}
+          scrollEnabled={false}
           sections={sectionData}
           renderItem={({ item }) => (
             <View>
