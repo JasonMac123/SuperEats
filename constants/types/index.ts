@@ -24,5 +24,5 @@ export interface FoodItem {
   name: string;
   price: number;
   info: string;
-  img: any;
+  img: string;
 }
