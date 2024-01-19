@@ -10,6 +10,7 @@ import tw from "twrnc";
 
 import ParallaxScrollView from "./ParallaxScrollView";
 import { Restaurant } from "../../constants/types";
+import FoodItemCard from "../FoodItemCard";
 
 interface ParallaxHeaderProps {
   data: Restaurant;
@@ -87,20 +88,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           keyExtractor={(item, index) => `${item.name + index}`}
           scrollEnabled={false}
           sections={sectionData}
-          renderItem={({ item }) => (
-            <View style={tw`flex-row justify-between mx-4`}>
-              <View>
-                <Text style={tw`text-neutral-700 text-2xl`}>
-                  {item.name}{" "}
-                  <Text style={tw`text-neutral-500 text-lg`}>
-                    ${item.price}
-                  </Text>
-                </Text>
-                <Text style={tw`text-neutral-400`}>{item.info}</Text>
-              </View>
-              <Image source={{ uri: item.img }} width={100} height={100} />
-            </View>
-          )}
+          renderItem={({ item }) => <FoodItemCard item={item} />}
           renderSectionHeader={({ section: { title } }) => (
             <View
               style={{
@@ -114,6 +102,24 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
             >
               <Text style={tw`text-2xl font-semibold`}>{title}</Text>
             </View>
+          )}
+          ItemSeparatorComponent={() => (
+            <View
+              style={{
+                height: 1,
+                backgroundColor: "#E5E5E5",
+                marginVertical: 4,
+              }}
+            />
+          )}
+          SectionSeparatorComponent={() => (
+            <View
+              style={{
+                height: 1,
+                backgroundColor: "#E5E5E5",
+                marginVertical: 4,
+              }}
+            />
           )}
         />
       </View>
