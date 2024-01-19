@@ -75,7 +75,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           scrollEnabled={false}
           sections={sectionData}
           renderItem={({ item }) => (
-            <View>
+            <View style={tw`flex-row justify-between mx-4`}>
               <View>
                 <Text style={tw`text-neutral-700 text-xl`}>
                   {item.name}
@@ -90,10 +90,11 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
             <View
               style={{
                 borderBottomColor: "#000",
-                borderBottomWidth: 10,
-                paddingBottom: 8,
+                borderBottomWidth: 2,
+                paddingBottom: 2,
                 paddingHorizontal: 8,
                 marginBottom: 10,
+                marginHorizontal: 20,
               }}
             >
               <Text style={tw`text-2xl font-semibold`}>{title}</Text>
