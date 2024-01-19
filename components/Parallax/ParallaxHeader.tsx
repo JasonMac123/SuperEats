@@ -83,7 +83,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
                 </Text>
                 <Text style={tw`text-neutral-400`}>{item.info}</Text>
               </View>
-              <Image source={{ uri: item.img }} />
+              <Image source={{ uri: item.img }} width={100} height={100} />
             </View>
           )}
           renderSectionHeader={({ section: { title } }) => (
