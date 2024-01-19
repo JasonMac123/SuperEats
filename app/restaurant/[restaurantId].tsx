@@ -1,11 +1,13 @@
-import { SafeAreaView, Text, View } from "react-native";
+import { View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { SplashScreen, useLocalSearchParams } from "expo-router";
-import { Restaurant } from "../../constants/types";
+import { useLocalSearchParams } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 import firebase_app from "../../firebase/config";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
-import { StatusBar } from "expo-status-bar";
+
+import { Restaurant } from "../../constants/types";
+
 import ParallaxHeader from "../../components/Parallax/ParallaxHeader";
 import SkeletonHeader from "../../components/Skeleton/SkeletonHeader";
 import SkeletonSection from "../../components/Skeleton/SkeletonSection";
