@@ -1,13 +1,15 @@
 import { View, Text, Image, TouchableOpacity, SectionList } from "react-native";
 import React, { useLayoutEffect } from "react";
 
-import ParallaxScrollView from "./ParallaxScrollView";
 import { useNavigation } from "expo-router";
+
+import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
-import { Restaurant } from "../../constants/types";
-
 import tw from "twrnc";
+
+import ParallaxScrollView from "./ParallaxScrollView";
+import { Restaurant } from "../../constants/types";
 
 interface ParallaxHeaderProps {
   data: Restaurant;
@@ -68,8 +70,19 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
       )}
     >
       <View>
-        <Text style={tw`text-2xl`}>{data.name}</Text>
-        <Text style={tw`text-neutral-600`}>{data.description}</Text>
+        <Text style={tw`text-2xl ml-8 mt-2 `}>
+          {data.name}{" "}
+          <Text style={tw`text-base`}>
+            {data.rating}
+            <Entypo name="star" size={16} color="green" /> (
+            {data.numberOfRatings})
+          </Text>
+        </Text>
+        <Text style={tw`text-sm ml-8 mb-2 text-neutral-500`}>
+          ${data.fee} delivery fee, {data.minDeliveryTime}-
+          {data.maxDeliveryTime} min delivery time
+        </Text>
+        <Text style={tw`text-neutral-600 mx-4 mb-2`}>{data.description}</Text>
         <SectionList
           keyExtractor={(item, index) => `${item.name + index}`}
           scrollEnabled={false}
