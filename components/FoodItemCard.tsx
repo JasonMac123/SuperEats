@@ -4,14 +4,17 @@ import React from "react";
 
 import tw from "twrnc";
 import { FoodItem } from "../constants/types";
+import useFoodItem from "../hooks/useFoodItem";
 
 interface FoodItemCardProps {
   item: FoodItem;
 }
 
 const FoodItemCard = ({ item }: FoodItemCardProps) => {
+  const { setItem } = useFoodItem();
+
   return (
-    <Link href={"/(modal)/foodItem"} asChild>
+    <Link href={"/(modal)/foodItem"} onPress={() => setItem(item)} asChild>
       <View style={tw`flex-row justify-between mx-4`}>
         <View>
           <Text style={tw`text-neutral-700 text-2xl`}>{item.name}</Text>
