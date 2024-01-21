@@ -1,10 +1,13 @@
 import { View, Text } from "react-native";
 import React from "react";
+import useFoodItem from "../../hooks/useFoodItem";
 
 const foodItem = () => {
+  const { item, setItem } = useFoodItem();
+
   return (
     <View>
-      <Text>foodItem</Text>
+      <Text>{item?.name}</Text>
     </View>
   );
 };
