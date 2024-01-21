@@ -135,8 +135,8 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           />
         </View>
       </ParallaxScrollView>
-      <Animated.View>
-        <View>
+      <Animated.View style={tw`absolute h-12 top-28  bg-white`}>
+        <View style={tw`flex-1`}>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
