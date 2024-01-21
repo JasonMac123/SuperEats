@@ -39,21 +39,6 @@ const Layout = () => {
         }}
       />
       <Tabs.Screen
-        name="search"
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <Ionicons
-                name={"search"}
-                size={24}
-                color={"black"}
-                style={!focused ? styles.icon : styles.focusedIcon}
-              />
-            );
-          },
-        }}
-      />
-      <Tabs.Screen
         name="profile"
         options={{
           tabBarIcon: ({ focused }) => {
