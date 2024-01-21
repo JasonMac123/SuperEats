@@ -11,7 +11,7 @@ interface FoodItemCardProps {
 
 const FoodItemCard = ({ item }: FoodItemCardProps) => {
   return (
-    <Link href={"/"} asChild>
+    <Link href={"/(modal)/foodItem"} asChild>
       <View style={tw`flex-row justify-between mx-4`}>
         <View>
           <Text style={tw`text-neutral-700 text-2xl`}>{item.name}</Text>
