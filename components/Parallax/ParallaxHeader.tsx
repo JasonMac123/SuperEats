@@ -7,7 +7,7 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Animated from "react-native-reanimated";
 import { useNavigation } from "expo-router";
 
@@ -19,6 +19,7 @@ import { Restaurant } from "../../constants/types";
 
 import ParallaxScrollView from "./ParallaxScrollView";
 import FoodItemCard from "../FoodItemCard";
+import StickyHeader from "./StickyHeader";
 
 interface ParallaxHeaderProps {
   data: Restaurant;
@@ -136,34 +137,9 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           />
         </View>
       </ParallaxScrollView>
-      <Animated.View style={styles.stickyHeader}>
-        <View style={tw`flex-1`}>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
-          >
-            {sectionData.map((item, index) => (
-              <TouchableOpacity key={index}>
-                <Text>{item.title}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
-      </Animated.View>
+      <StickyHeader sectionData={sectionData} />
     </>
   );
 };
 
 export default ParallaxHeader;
-
-const styles = StyleSheet.create({
-  stickyHeader: {
-    position: "absolute",
-    right: 0,
-    height: 50,
-    left: 0,
-    top: 110,
-    backgroundColor: "#fff",
-  },
-});
