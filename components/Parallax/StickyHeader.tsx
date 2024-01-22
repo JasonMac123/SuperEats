@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 import Animated from "react-native-reanimated";
 import tw from "twrnc";
@@ -22,6 +22,8 @@ interface StickyHeaderProps {
 }
 
 const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
+  const [activeSection, setActiveSection] = useState(0);
+
   return (
     <Animated.View style={styles.stickyHeader}>
       <View style={tw`flex-1`}>
@@ -31,8 +33,19 @@ const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
           contentContainerStyle={{ paddingHorizontal: 16 }}
         >
           {sectionData.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.button}>
-              <Text>{item.title}</Text>
+            <TouchableOpacity
+              key={index}
+              style={
+                index === activeSection ? styles.activeButton : styles.button
+              }
+            >
+              <Text
+                style={
+                  index === activeSection ? styles.activeText : styles.text
+                }
+              >
+                {item.title}
+              </Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -54,4 +67,6 @@ const styles = StyleSheet.create({
   },
   button: {},
   activeButton: {},
+  activeText: {},
+  text: {},
 });
