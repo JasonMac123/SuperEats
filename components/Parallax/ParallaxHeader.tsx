@@ -1,18 +1,13 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  SectionList,
-  ScrollView,
-  StyleSheet,
-} from "react-native";
-import React, { useLayoutEffect, useState } from "react";
-import Animated from "react-native-reanimated";
-import { useNavigation } from "expo-router";
+import { View, Text, Image, SectionList, StyleSheet } from "react-native";
+import React, { useLayoutEffect } from "react";
 
+import { useNavigation } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
+
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated";
 
 import tw from "twrnc";
 import { Restaurant } from "../../constants/types";
@@ -115,9 +110,30 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           />
         </View>
       </ParallaxScrollView>
-      <StickyHeader sectionData={sectionData} />
+      <Animated.View style={styles.animatedContainer}>
+        <StickyHeader sectionData={sectionData} />
+      </Animated.View>
     </>
   );
 };
 
 export default ParallaxHeader;
+
+const styles = StyleSheet.create({
+  animatedContainer: {
+    position: "absolute",
+    right: 0,
+    height: 50,
+    left: 0,
+    top: 110,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.2,
+    elevation: 5,
+    width: "100%",
+  },
+});
