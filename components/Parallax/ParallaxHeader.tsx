@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   SectionList,
   ScrollView,
+  StyleSheet,
 } from "react-native";
 import React, { useLayoutEffect } from "react";
 import Animated from "react-native-reanimated";
@@ -135,7 +136,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           />
         </View>
       </ParallaxScrollView>
-      <Animated.View style={tw`absolute h-12 top-28  bg-white`}>
+      <Animated.View style={styles.stickyHeader}>
         <View style={tw`flex-1`}>
           <ScrollView
             horizontal
@@ -155,3 +156,14 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
 };
 
 export default ParallaxHeader;
+
+const styles = StyleSheet.create({
+  stickyHeader: {
+    position: "absolute",
+    right: 0,
+    height: 50,
+    left: 0,
+    top: 110,
+    backgroundColor: "#fff",
+  },
+});
