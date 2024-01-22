@@ -31,6 +31,7 @@ const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 16 }}
+          style={styles.scrollView}
         >
           {sectionData.map((item, index) => (
             <TouchableOpacity
@@ -88,6 +89,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 4,
     borderRadius: 50,
+  },
+  scrollView: {
+    paddingHorizontal: 16,
+    alignItems: "center",
+    gap: 10,
+    paddingBottom: 4,
   },
   activeText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
   text: { color: "#15803d", fontSize: 16 },
