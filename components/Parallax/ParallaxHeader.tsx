@@ -37,6 +37,22 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
     });
   });
 
+  const opacity = useSharedValue(0);
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }));
+
+  const onScroll = (event: any) => {
+    const scrollDistance = event.nativeEvent.contentOffset.y;
+
+    if (scrollDistance > 300) {
+      opacity.value = 1;
+    } else {
+      opacity.value = 0;
+    }
+  };
+
   return (
     <>
       <ParallaxScrollView
@@ -55,6 +71,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
             <Text style={tw`text-2xl mt-14`}>{data.name}</Text>
           </View>
         )}
+        scrollEvent={onScroll}
       >
         <View>
           <Text style={tw`text-2xl ml-8 mt-2 `}>
@@ -110,7 +127,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           />
         </View>
       </ParallaxScrollView>
-      <Animated.View style={styles.animatedContainer}>
+      <Animated.View style={[styles.animatedContainer, animatedStyles]}>
         <StickyHeader sectionData={sectionData} />
       </Animated.View>
     </>
