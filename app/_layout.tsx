@@ -4,8 +4,10 @@ import { StatusBar } from "expo-status-bar";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+
+import tw from "twrnc";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -46,6 +48,28 @@ export default function RootLayoutNav() {
             options={{
               presentation: "card",
               headerShadowVisible: false,
+              headerLeft: () => (
+                <TouchableOpacity
+                  style={tw`w-12 h-12 rounded-full bg-white justify-center items-center border border-green-700`}
+                  onPress={() => navigation.goBack()}
+                >
+                  <Ionicons name="arrow-back" color="#15803d" size={24} />
+                </TouchableOpacity>
+              ),
+              headerRight: () => (
+                <View style={tw`flex-row items-center justify-center gap-4`}>
+                  <TouchableOpacity
+                    style={tw`w-12 h-12 rounded-full bg-white justify-center items-center border border-green-700`}
+                  >
+                    <Ionicons name="share-outline" color="#15803d" size={24} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={tw`w-12 h-12 rounded-full bg-white justify-center items-center border border-green-700`}
+                  >
+                    <Ionicons name="search-outline" color="#15803d" size={24} />
+                  </TouchableOpacity>
+                </View>
+              ),
             }}
           />
           <Stack.Screen
