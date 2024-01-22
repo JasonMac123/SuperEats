@@ -26,12 +26,11 @@ const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
 
   return (
     <Animated.View style={styles.stickyHeader}>
-      <View style={tw`flex-1`}>
+      <View style={styles.container}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 16 }}
-          style={styles.scrollView}
         >
           {sectionData.map((item, index) => (
             <TouchableOpacity
@@ -39,6 +38,7 @@ const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
               style={
                 index === activeSection ? styles.activeButton : styles.button
               }
+              onPress={() => setActiveSection(index)}
             >
               <Text
                 style={
@@ -65,9 +65,18 @@ const styles = StyleSheet.create({
     left: 0,
     top: 110,
     backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.2,
+    elevation: 5,
+    width: "100%",
   },
-  scrollView: {
+  container: {
     justifyContent: "center",
+    paddingTop: 10,
   },
   button: {
     paddingHorizontal: 16,
@@ -81,5 +90,5 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   activeText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
-  text: { color: "#000", fontSize: 16 },
+  text: { color: "#15803d", fontSize: 16 },
 });
