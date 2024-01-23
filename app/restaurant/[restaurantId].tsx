@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";

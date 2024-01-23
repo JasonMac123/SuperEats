@@ -8,10 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useRef, useState } from "react";
-
-import { useNavigation } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
-
 import Animated, {
   Easing,
   useAnimatedStyle,
