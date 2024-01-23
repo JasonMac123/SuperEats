@@ -16,14 +16,30 @@ type Section = {
 
 interface StickyHeaderProps {
   sectionData: Section[];
+  scrollRef: React.RefObject<ScrollView>;
+  itemsRef: React.MutableRefObject<TouchableOpacity[]>;
 }
 
-const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
+const StickyHeader = ({
+  sectionData,
+  scrollRef,
+  itemsRef,
+}: StickyHeaderProps) => {
   const [activeSection, setActiveSection] = useState(0);
+
+  const selectSection = (index: number) => {
+    const selected = itemsRef.current[index];
+    setActiveSection(index);
+
+    selected.measure((x, y, width, height, pageX, pageY) => {
+      scrollRef.current?.scrollTo({ x: x - 16 });
+    });
+  };
 
   return (
     <View style={styles.container}>
       <ScrollView
+        ref={scrollRef}
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 16, alignItems: "center" }}
@@ -31,11 +47,12 @@ const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
       >
         {sectionData.map((item, index) => (
           <TouchableOpacity
+            ref={(ref) => (itemsRef.current[index] = ref!)}
             key={index}
             style={
               index === activeSection ? styles.activeButton : styles.button
             }
-            onPress={() => setActiveSection(index)}
+            onPress={() => selectSection(index)}
           >
             <Text
               style={index === activeSection ? styles.activeText : styles.text}

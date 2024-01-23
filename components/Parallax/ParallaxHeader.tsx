@@ -1,5 +1,13 @@
-import { View, Text, Image, SectionList, StyleSheet } from "react-native";
-import React, { useLayoutEffect } from "react";
+import {
+  View,
+  Text,
+  Image,
+  SectionList,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import React, { useLayoutEffect, useRef } from "react";
 
 import { useNavigation } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
@@ -24,6 +32,9 @@ interface ParallaxHeaderProps {
 
 const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
   const navigation = useNavigation();
+
+  const scrollRef = useRef<ScrollView>(null);
+  const itemsRef = useRef<TouchableOpacity[]>([]);
 
   const sectionData = data.meals.map((item, index) => ({
     title: item.categoryName,
@@ -113,7 +124,11 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
         </View>
       </ParallaxScrollView>
       <Animated.View style={[styles.animatedContainer, animatedStyles]}>
-        <StickyHeader sectionData={sectionData} />
+        <StickyHeader
+          sectionData={sectionData}
+          scrollRef={scrollRef}
+          itemsRef={itemsRef}
+        />
       </Animated.View>
     </>
   );
