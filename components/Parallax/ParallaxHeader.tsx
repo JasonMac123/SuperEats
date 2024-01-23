@@ -46,7 +46,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
   const onScroll = (event: any) => {
     const scrollDistance = event.nativeEvent.contentOffset.y;
 
-    if (scrollDistance > 300) {
+    if (scrollDistance > 280) {
       opacity.value = 1;
     } else {
       opacity.value = 0;
