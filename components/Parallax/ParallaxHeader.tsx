@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { useNavigation } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
@@ -31,10 +31,11 @@ interface ParallaxHeaderProps {
 }
 
 const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
-  const navigation = useNavigation();
+  const [activeSection, setActiveSection] = useState(0);
 
   const scrollRef = useRef<ScrollView>(null);
   const itemsRef = useRef<TouchableOpacity[]>([]);
+  const sectionListRef = useRef<SectionList>(null);
 
   const sectionData = data.meals.map((item, index) => ({
     title: item.categoryName,
@@ -42,13 +43,19 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
     index,
   }));
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTransparent: true,
-      headerTitle: "",
-      headerTintColor: "#15803d",
+  const selectSection = (index: number) => {
+    const selected = itemsRef.current[index];
+    setActiveSection(index);
+
+    selected.measure((x, y, width, height, pageX, pageY) => {
+      scrollRef.current?.scrollTo({ x: x - 16 });
     });
-  });
+
+    sectionListRef.current?.scrollToLocation({
+      itemIndex: 0,
+      sectionIndex: index,
+    });
+  };
 
   const opacity = useSharedValue(0);
 
@@ -107,6 +114,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           </Text>
           <Text style={tw`text-neutral-600 mx-4 mb-2`}>{data.description}</Text>
           <SectionList
+            ref={sectionListRef}
             keyExtractor={(item, index) => `${item.name + index}`}
             scrollEnabled={false}
             sections={sectionData}
@@ -128,6 +136,8 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
           sectionData={sectionData}
           scrollRef={scrollRef}
           itemsRef={itemsRef}
+          activeSection={activeSection}
+          selectSection={selectSection}
         />
       </Animated.View>
     </>
