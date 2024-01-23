@@ -48,6 +48,9 @@ export default function RootLayoutNav() {
             options={{
               presentation: "card",
               headerShadowVisible: false,
+              headerTransparent: true,
+              headerTitle: "",
+              headerTintColor: "#15803d",
               headerLeft: () => (
                 <TouchableOpacity
                   style={tw`w-12 h-12 rounded-full bg-white justify-center items-center border border-green-700`}
