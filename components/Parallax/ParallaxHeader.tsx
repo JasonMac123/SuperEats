@@ -101,36 +101,13 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
             sections={sectionData}
             renderItem={({ item }) => <FoodItemCard item={item} />}
             renderSectionHeader={({ section: { title } }) => (
-              <View
-                style={{
-                  borderBottomColor: "#000",
-                  borderBottomWidth: 2,
-                  paddingBottom: 2,
-                  paddingHorizontal: 8,
-                  marginBottom: 10,
-                  marginHorizontal: 20,
-                }}
-              >
+              <View style={styles.sectionHeader}>
                 <Text style={tw`text-2xl font-semibold`}>{title}</Text>
               </View>
             )}
-            ItemSeparatorComponent={() => (
-              <View
-                style={{
-                  height: 1,
-                  backgroundColor: "#E5E5E5",
-                  marginVertical: 4,
-                }}
-              />
-            )}
+            ItemSeparatorComponent={() => <View style={styles.itemSeperator} />}
             SectionSeparatorComponent={() => (
-              <View
-                style={{
-                  height: 1,
-                  backgroundColor: "#E5E5E5",
-                  marginVertical: 4,
-                }}
-              />
+              <View style={styles.itemSeperator} />
             )}
           />
         </View>
@@ -160,5 +137,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 5,
     width: "100%",
+  },
+  itemSeperator: {
+    height: 1,
+    backgroundColor: "#E5E5E5",
+    marginVertical: 4,
+  },
+  sectionHeader: {
+    borderBottomColor: "#000",
+    borderBottomWidth: 2,
+    paddingBottom: 2,
+    paddingHorizontal: 8,
+    marginBottom: 10,
+    marginHorizontal: 20,
   },
 });
