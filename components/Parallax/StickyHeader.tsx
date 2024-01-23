@@ -26,7 +26,7 @@ const StickyHeader = ({ sectionData }: StickyHeaderProps) => {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 16 }}
+        contentContainerStyle={{ paddingHorizontal: 16, alignItems: "center" }}
         style={styles.scrollView}
       >
         {sectionData.map((item, index) => (
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     paddingHorizontal: 16,
-    alignItems: "center",
     gap: 10,
     paddingBottom: 4,
   },
