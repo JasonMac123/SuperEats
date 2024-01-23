@@ -7,6 +7,7 @@ import { Entypo } from "@expo/vector-icons";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
+  withTiming,
 } from "react-native-reanimated";
 
 import tw from "twrnc";
@@ -47,9 +48,9 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
     const scrollDistance = event.nativeEvent.contentOffset.y;
 
     if (scrollDistance > 280) {
-      opacity.value = 1;
+      opacity.value = withTiming(1);
     } else {
-      opacity.value = 0;
+      opacity.value = withTiming(0);
     }
   };
 
