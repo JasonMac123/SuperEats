@@ -5,6 +5,7 @@ import { useNavigation } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
 
 import Animated, {
+  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -47,10 +48,16 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
   const onScroll = (event: any) => {
     const scrollDistance = event.nativeEvent.contentOffset.y;
 
-    if (scrollDistance > 280) {
-      opacity.value = withTiming(1);
+    if (scrollDistance > 250) {
+      opacity.value = withTiming(1, {
+        duration: 200,
+        easing: Easing.inOut(Easing.ease),
+      });
     } else {
-      opacity.value = withTiming(0);
+      opacity.value = withTiming(0, {
+        duration: 200,
+        easing: Easing.inOut(Easing.ease),
+      });
     }
   };
 
