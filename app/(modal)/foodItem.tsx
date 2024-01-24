@@ -1,16 +1,21 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
 import useFoodItem from "../../hooks/useFoodItem";
 import { useCart } from "../../hooks/useCart";
 
+import tw from "twrnc";
+
 const foodItem = () => {
-  const { item, setItem } = useFoodItem();
+  const { item } = useFoodItem();
 
   const { addProduct, reduceProduct } = useCart();
 
   return (
     <View>
-      <Text>{item?.name}</Text>
+      <Image source={{ uri: item?.img }} width={400} height={300} />
+      <View style={tw`p-4`}>
+        <Text style={tw`text-5xl`}>{item?.name}</Text>
+      </View>
     </View>
   );
 };
