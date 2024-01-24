@@ -79,12 +79,14 @@ export default function RootLayoutNav() {
             name="(modal)/foodItem"
             options={{
               headerTitle: "",
+              headerTransparent: true,
               presentation: "modal",
               headerLeft: () => (
                 <TouchableOpacity
                   onPress={() => {
                     navigation.goBack();
                   }}
+                  style={tw`bg-white rounded-full w-12 h-12 justify-center items-center`}
                 >
                   <Ionicons name="close-outline" size={28} color={"green"} />
                 </TouchableOpacity>
