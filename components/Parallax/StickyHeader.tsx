@@ -18,24 +18,17 @@ interface StickyHeaderProps {
   sectionData: Section[];
   scrollRef: React.RefObject<ScrollView>;
   itemsRef: React.MutableRefObject<TouchableOpacity[]>;
+  activeSection: number;
+  selectSection: (index: number) => void;
 }
 
 const StickyHeader = ({
   sectionData,
   scrollRef,
   itemsRef,
+  selectSection,
+  activeSection,
 }: StickyHeaderProps) => {
-  const [activeSection, setActiveSection] = useState(0);
-
-  const selectSection = (index: number) => {
-    const selected = itemsRef.current[index];
-    setActiveSection(index);
-
-    selected.measure((x, y, width, height, pageX, pageY) => {
-      scrollRef.current?.scrollTo({ x: x - 16 });
-    });
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView
