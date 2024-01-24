@@ -1,12 +1,15 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { Tabs } from "expo-router";
+import { useCart } from "../../hooks/useCart";
 
 const Layout = () => {
+  const { quantity } = useCart();
+
   return (
     <Tabs
       screenOptions={{
@@ -58,12 +61,19 @@ const Layout = () => {
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <Ionicons
-                name={"cart-sharp"}
-                size={24}
-                color={"black"}
-                style={!focused ? styles.icon : styles.focusedIcon}
-              />
+              <>
+                <Ionicons
+                  name={"cart-sharp"}
+                  size={24}
+                  color={"black"}
+                  style={!focused ? styles.icon : styles.focusedIcon}
+                />
+                {quantity > 0 && (
+                  <View style={styles.cartNotification}>
+                    <Text style={styles.cartNumber}>{quantity}</Text>
+                  </View>
+                )}
+              </>
             );
           },
         }}
@@ -78,6 +88,15 @@ const styles = StyleSheet.create({
   },
   focusedIcon: {
     opacity: 100,
+  },
+  cartNumber: {
+    color: "#fff",
+  },
+  cartNotification: {
+    width: 4,
+    height: 4,
+    borderRadius: 4,
+    backgroundColor: "#1CB91C",
   },
 });
 
