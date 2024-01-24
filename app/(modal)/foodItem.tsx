@@ -14,7 +14,7 @@ const foodItem = () => {
   const addToCart = (item: FoodItem) => {};
 
   return (
-    <View>
+    <View style={tw`flex-1`}>
       <Image source={{ uri: item?.img }} width={400} height={300} />
       <View style={tw`p-4`}>
         <Text style={tw`text-5xl`}>{item?.name}</Text>
@@ -22,7 +22,9 @@ const foodItem = () => {
       </View>
       <View style={styles.footer}>
         <View>
-          <TouchableOpacity style={tw`bg-green-700`}>
+          <TouchableOpacity
+            style={tw`h-12 px-4 rounded-md bg-green-700 items-center justify-center`}
+          >
             <Text style={tw`text-white font-semibold`}>
               Add to Cart ${item?.price}
             </Text>
@@ -38,9 +40,12 @@ export default foodItem;
 const styles = StyleSheet.create({
   footer: {
     position: "absolute",
-    bottom: 0,
+    bottom: 20,
     left: 0,
     width: "100%",
-    padding: 10,
+    padding: 30,
+    elevation: 10,
+    borderTopColor: "grey",
+    borderTopWidth: 2,
   },
 });
