@@ -18,8 +18,8 @@ interface ProductCartProps {
 
 const ProductCard = ({ item }: ProductCartProps) => {
   return (
-    <View style={tw`flex-row`}>
-      <Image source={{ uri: item.img }} />
+    <View style={tw`flex-row justify-between`}>
+      <Image source={{ uri: item.img }} width={100} height={100} />
       <View>
         <Text style={tw`text-xl`}>{item.name}</Text>
         <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
