@@ -16,7 +16,6 @@ const Layout = () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
-        headerShown: false,
         tabBarStyle: {
           position: "absolute",
           bottom: 0,
@@ -30,6 +29,7 @@ const Layout = () => {
       <Tabs.Screen
         name="home"
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
