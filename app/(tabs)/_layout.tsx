@@ -68,11 +68,7 @@ const Layout = () => {
                   color={"black"}
                   style={!focused ? styles.icon : styles.focusedIcon}
                 />
-                {quantity > 0 && (
-                  <View style={styles.cartNotification}>
-                    <Text style={styles.cartNumber}>{quantity}</Text>
-                  </View>
-                )}
+                {quantity > 0 && <View style={styles.cartNotification} />}
               </>
             );
           },
@@ -89,14 +85,14 @@ const styles = StyleSheet.create({
   focusedIcon: {
     opacity: 100,
   },
-  cartNumber: {
-    color: "#fff",
-  },
   cartNotification: {
-    width: 4,
-    height: 4,
-    borderRadius: 4,
-    backgroundColor: "#1CB91C",
+    position: "absolute",
+    bottom: 37,
+    right: 50,
+    width: 10,
+    height: 10,
+    borderRadius: 16,
+    backgroundColor: "#FF0000",
   },
 });
 
