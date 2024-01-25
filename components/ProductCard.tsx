@@ -16,7 +16,7 @@ interface ProductCartProps {
   reduceProduct: (item: FoodItem) => void;
 }
 
-const ProductCard = ({ item }: ProductCartProps) => {
+const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
   return (
     <View style={tw`flex-row justify-between`}>
       <Image source={{ uri: item.img }} width={100} height={100} />
@@ -26,12 +26,27 @@ const ProductCard = ({ item }: ProductCartProps) => {
       </View>
       <View style={tw`flex-row gap-4 bg-neutral-200`}>
         {item.quantity === 1 ? (
-          <Feather name="trash" size={24} color="black" />
+          <Feather
+            name="trash"
+            size={24}
+            color="black"
+            onPress={() => reduceProduct(item)}
+          />
         ) : (
-          <AntDesign name="minus" size={24} color="black" />
+          <AntDesign
+            name="minus"
+            size={24}
+            color="black"
+            onPress={() => reduceProduct(item)}
+          />
         )}
         {item.quantity}
-        <AntDesign name="plus" size={24} color="black" />
+        <AntDesign
+          name="plus"
+          size={24}
+          color="black"
+          onPress={() => addToCart(item)}
+        />
       </View>
     </View>
   );
