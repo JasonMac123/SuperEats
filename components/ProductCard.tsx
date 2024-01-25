@@ -4,6 +4,8 @@ import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
+import tw from "twrnc";
+
 import { FoodItem } from "../constants/types";
 
 interface ProductCartProps {
@@ -16,13 +18,13 @@ interface ProductCartProps {
 
 const ProductCard = ({ item }: ProductCartProps) => {
   return (
-    <View>
+    <View style={tw`flex-row`}>
       <Image source={{ uri: item.img }} />
       <View>
-        <Text>{item.name}</Text>
-        <Text>{item.price}</Text>
+        <Text style={tw`text-xl`}>{item.name}</Text>
+        <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
       </View>
-      <View>
+      <View style={tw`flex-row gap-4 bg-neutral-200`}>
         {item.quantity === 1 ? (
           <Feather name="trash" size={24} color="black" />
         ) : (
