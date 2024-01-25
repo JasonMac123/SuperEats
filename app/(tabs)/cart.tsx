@@ -26,7 +26,15 @@ const Cart = () => {
             reduceProduct={reduceProduct}
           />
         )}
-      ></FlatList>
+        ListFooterComponent={
+          <View>
+            <View style={tw`flex-row justify-between mx-2`}>
+              <Text>Subtotal</Text>
+              <Text>${total}</Text>
+            </View>
+          </View>
+        }
+      />
     </SafeAreaView>
   );
 };
