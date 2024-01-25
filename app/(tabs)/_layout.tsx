@@ -1,13 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-import { Tabs } from "expo-router";
+import { Tabs, useNavigation } from "expo-router";
 import { useCart } from "../../hooks/useCart";
 
 const Layout = () => {
+  const navigation = useNavigation();
   const { quantity } = useCart();
 
   return (
@@ -54,6 +55,15 @@ const Layout = () => {
               />
             );
           },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Ionicons name="close-outline" size={28} color={"green"} />
+            </TouchableOpacity>
+          ),
         }}
       />
       <Tabs.Screen
@@ -72,6 +82,15 @@ const Layout = () => {
               </>
             );
           },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Ionicons name="close-outline" size={28} color={"green"} />
+            </TouchableOpacity>
+          ),
         }}
       />
     </Tabs>
