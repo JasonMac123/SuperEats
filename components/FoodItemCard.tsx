@@ -8,14 +8,25 @@ import useFoodItem from "../hooks/useFoodItem";
 
 interface FoodItemCardProps {
   item: FoodItem;
+  minDeliveryTime: number;
+  maxDeliveryTime: number;
 }
 
-const FoodItemCard = ({ item }: FoodItemCardProps) => {
-  const { setItem } = useFoodItem();
+const FoodItemCard = ({
+  item,
+  minDeliveryTime,
+  maxDeliveryTime,
+}: FoodItemCardProps) => {
+  const { setItem, setTime } = useFoodItem();
 
   return (
     <Link href={"/(modal)/foodItem"} asChild>
-      <TouchableOpacity onPress={() => setItem(item)}>
+      <TouchableOpacity
+        onPress={() => {
+          setItem(item);
+          setTime([minDeliveryTime, maxDeliveryTime]);
+        }}
+      >
         <View style={tw`flex-row justify-between mx-4`}>
           <View>
             <Text style={tw`text-neutral-700 text-2xl`}>{item.name}</Text>

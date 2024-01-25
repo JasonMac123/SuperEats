@@ -12,9 +12,9 @@ import { useNavigation } from "expo-router";
 const foodItem = () => {
   const navigation = useNavigation();
 
-  const { item } = useFoodItem();
+  const { item, deliveryTime } = useFoodItem();
 
-  const { addProduct, reduceProduct } = useCart();
+  const { addProduct, setTime } = useCart();
 
   const addToCart = (item: FoodItem) => {
     addProduct(item);
@@ -49,6 +49,7 @@ const foodItem = () => {
             style={tw`h-12 px-4 rounded-md bg-green-700 items-center justify-center`}
             onPress={() => {
               addToCart(item!);
+              setTime(deliveryTime);
             }}
           >
             <Text style={tw`text-white font-semibold`}>
