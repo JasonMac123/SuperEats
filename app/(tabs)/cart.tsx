@@ -1,7 +1,7 @@
 import { FlatList, SafeAreaView } from "react-native";
 import React from "react";
 import { useCart } from "../../hooks/useCart";
-import ProductCart from "../../components/ProductCart";
+import ProductCard from "../../components/ProductCard";
 
 const Cart = () => {
   const { products, quantity, total, addProduct, reduceProduct, clearCart } =
@@ -9,7 +9,16 @@ const Cart = () => {
 
   return (
     <SafeAreaView>
-      <FlatList data={products} renderItem={ProductCart}></FlatList>
+      <FlatList
+        data={products}
+        renderItem={({ item }) => (
+          <ProductCard
+            item={item}
+            addToCart={addProduct}
+            reduceProduct={reduceProduct}
+          />
+        )}
+      ></FlatList>
     </SafeAreaView>
   );
 };
