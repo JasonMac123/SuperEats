@@ -1,18 +1,33 @@
 import { FlatList, SafeAreaView, Text, View } from "react-native";
 import React from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import tw from "twrnc";
 
 import { useCart } from "../../hooks/useCart";
-
 import ProductCard from "../../components/ProductCard";
 
 const Cart = () => {
-  const { products, quantity, total, addProduct, reduceProduct, clearCart } =
-    useCart();
+  const {
+    products,
+    deliveryTime,
+    quantity,
+    total,
+    addProduct,
+    reduceProduct,
+    clearCart,
+  } = useCart();
 
   return (
     <SafeAreaView>
+      <View>
+        <Text style={tw`text-2xl`}>Delivery</Text>
+        <View style={tw`flex-row`}>
+          <MaterialIcons name="delivery-dining" size={24} color="black" />
+          <Text>Deliver from {deliveryTime.join(" - ")} </Text>
+          <Text style={tw`text-green-600`}>Change</Text>
+        </View>
+      </View>
       <FlatList
         data={products}
         ListHeaderComponent={<Text style={tw`text-xl my-2 pl-4`}>Items</Text>}
