@@ -115,7 +115,13 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
             keyExtractor={(item, index) => `${item.name + index}`}
             scrollEnabled={false}
             sections={sectionData}
-            renderItem={({ item }) => <FoodItemCard item={item} />}
+            renderItem={({ item }) => (
+              <FoodItemCard
+                item={item}
+                minDeliveryTime={data.minDeliveryTime}
+                maxDeliveryTime={data.maxDeliveryTime}
+              />
+            )}
             renderSectionHeader={({ section: { title } }) => (
               <View style={styles.sectionHeader}>
                 <Text style={tw`text-2xl font-semibold`}>{title}</Text>

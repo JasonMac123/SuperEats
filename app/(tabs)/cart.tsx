@@ -33,7 +33,9 @@ const Cart = () => {
       </View>
       <FlatList
         data={products}
-        ListHeaderComponent={<Text style={tw`text-xl my-2 pl-4`}>Items</Text>}
+        ListHeaderComponent={() => (
+          <Text style={tw`text-xl my-2 pl-4`}>Items</Text>
+        )}
         ItemSeparatorComponent={() => (
           <View style={{ height: 1, backgroundColor: "#FCFCFC" }} />
         )}
