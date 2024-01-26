@@ -6,6 +6,7 @@ import tw from "twrnc";
 
 import { useCart } from "../../hooks/useCart";
 import ProductCard from "../../components/ProductCard";
+import { getDeliveryTime } from "../../functions/getDeliveryTime";
 
 const Cart = () => {
   const {
@@ -24,7 +25,9 @@ const Cart = () => {
         <Text style={tw`text-2xl`}>Delivery</Text>
         <View style={tw`flex-row`}>
           <MaterialIcons name="delivery-dining" size={24} color="black" />
-          <Text>Deliver from {deliveryTime.join(" - ")} </Text>
+          <Text>
+            Deliver from {getDeliveryTime(deliveryTime).join(" - ")} minutes{" "}
+          </Text>
           <Text style={tw`text-green-600`}>Change</Text>
         </View>
       </View>

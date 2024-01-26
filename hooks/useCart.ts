@@ -4,7 +4,7 @@ import { FoodItem } from "../constants/types";
 
 interface CartStore {
   products: Array<FoodItem & { quantity: number }>;
-  deliveryTime: Array<Number>;
+  deliveryTime: Array<number>;
   quantity: number;
   total: number;
   addProduct: (product: FoodItem) => void;
