@@ -40,7 +40,7 @@ const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
             onPress={() => reduceProduct(item)}
           />
         )}
-        {item.quantity}
+        <Text>{item.quantity}</Text>
         <AntDesign
           name="plus"
           size={24}
