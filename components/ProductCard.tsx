@@ -24,7 +24,9 @@ const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
         <Text style={tw`text-xl`}>{item.name}</Text>
         <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
       </View>
-      <View style={tw`flex-row gap-4 bg-neutral-200`}>
+      <View
+        style={tw`flex-row gap-4 bg-neutral-200 items-center justify-center h-12 px-4 py-4`}
+      >
         {item.quantity === 1 ? (
           <Feather
             name="trash"
