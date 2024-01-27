@@ -21,11 +21,11 @@ const Cart = () => {
 
   return (
     <SafeAreaView>
-      <View>
+      <View style={tw`mx-4 my-4`}>
         <Text style={tw`text-2xl`}>Delivery</Text>
         <View style={tw`flex-row`}>
           <MaterialIcons name="delivery-dining" size={24} color="black" />
-          <Text>
+          <Text style={tw`flex-1 mx-2`}>
             Deliver from {getDeliveryTime(deliveryTime).join(" - ")} minutes{" "}
           </Text>
           <Text style={tw`text-green-600`}>Change</Text>
