@@ -20,7 +20,7 @@ const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
   return (
     <View style={tw`flex-row justify-between`}>
       <Image source={{ uri: item.img }} width={100} height={100} />
-      <View>
+      <View style={tw`justify-start items-start px-4 py-2`}>
         <Text style={tw`text-xl`}>{item.name}</Text>
         <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
       </View>
