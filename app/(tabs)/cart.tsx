@@ -7,6 +7,7 @@ import tw from "twrnc";
 import { useCart } from "../../hooks/useCart";
 import ProductCard from "../../components/ProductCard";
 import { getDeliveryTime } from "../../functions/getDeliveryTime";
+import CartFooter from "../../components/CartFooter";
 
 const Cart = () => {
   const {
@@ -55,6 +56,7 @@ const Cart = () => {
           </View>
         }
       />
+      <CartFooter orderFood={orderFood} />
     </SafeAreaView>
   );
 };
