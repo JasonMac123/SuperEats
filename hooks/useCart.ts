@@ -4,18 +4,15 @@ import { FoodItem } from "../constants/types";
 
 interface CartStore {
   products: Array<FoodItem & { quantity: number }>;
-  deliveryTime: Array<number>;
   quantity: number;
   total: number;
   addProduct: (product: FoodItem) => void;
   reduceProduct: (product: FoodItem) => void;
   clearCart: () => void;
-  setTime: (timeArray: Array<number>) => void;
 }
 
 export const useCart = create<CartStore>((set) => ({
   products: [],
-  deliveryTime: [],
   quantity: 0,
   total: 0,
   addProduct: (product) => {
@@ -52,5 +49,4 @@ export const useCart = create<CartStore>((set) => ({
     });
   },
   clearCart: () => set({ products: [], quantity: 0, total: 0 }),
-  setTime: (timeArray) => set({ deliveryTime: timeArray }),
 }));

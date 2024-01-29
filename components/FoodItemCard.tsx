@@ -5,6 +5,7 @@ import React from "react";
 import tw from "twrnc";
 import { FoodItem } from "../constants/types";
 import useFoodItem from "../hooks/useFoodItem";
+import { useRestaurant } from "../hooks/useRestaurant";
 
 interface FoodItemCardProps {
   item: FoodItem;
@@ -17,7 +18,8 @@ const FoodItemCard = ({
   minDeliveryTime,
   maxDeliveryTime,
 }: FoodItemCardProps) => {
-  const { setItem, setTime } = useFoodItem();
+  const { setItem } = useFoodItem();
+  const { setTime } = useRestaurant();
 
   return (
     <Link href={"/(modal)/foodItem"} asChild>

@@ -1,25 +1,20 @@
-import { FlatList, SafeAreaView, Switch, Text, View } from "react-native";
+import { FlatList, SafeAreaView, Text, View } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import tw from "twrnc";
 
 import { useCart } from "../../hooks/useCart";
-import ProductCard from "../../components/ProductCard";
+import { useRestaurant } from "../../hooks/useRestaurant";
 import { getDeliveryTime } from "../../functions/getDeliveryTime";
+
+import ProductCard from "../../components/ProductCard";
 import CartFooter from "../../components/CartFooter";
 import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
-  const {
-    products,
-    deliveryTime,
-    quantity,
-    total,
-    addProduct,
-    reduceProduct,
-    clearCart,
-  } = useCart();
+  const { products, total, addProduct, reduceProduct, clearCart } = useCart();
+  const { deliveryTime } = useRestaurant();
 
   const orderFood = () => {
     clearCart();
@@ -59,7 +54,15 @@ const Cart = () => {
         ListFooterComponent={
           <View style={tw`bg-white`}>
             <View style={tw`flex-row justify-between mx-2 mt-4`}>
-              <Text style={tw`text-xl`}>Subtotal</Text>
+              <Text style={tw`text-xl text-neutral-400`}>Subtotal</Text>
+              <Text style={tw`text-lg`}>${total}</Text>
+            </View>
+            <View style={tw`flex-row justify-between mx-2 mt-4`}>
+              <Text style={tw`text-xl text-neutral-400`}>Service Fee</Text>
+              <Text style={tw`text-lg`}>${total}</Text>
+            </View>
+            <View style={tw`flex-row justify-between mx-2 mt-4`}>
+              <Text style={tw`text-xl text-neutral-400`}>Delivery Fee</Text>
               <Text style={tw`text-lg`}>${total}</Text>
             </View>
           </View>
