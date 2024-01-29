@@ -1,18 +1,21 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-import { Tabs } from "expo-router";
+import { Tabs, useNavigation } from "expo-router";
+import { useCart } from "../../hooks/useCart";
 
 const Layout = () => {
+  const navigation = useNavigation();
+  const { quantity } = useCart();
+
   return (
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
-        headerShown: false,
         tabBarStyle: {
           position: "absolute",
           bottom: 0,
@@ -26,25 +29,11 @@ const Layout = () => {
       <Tabs.Screen
         name="home"
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
                 name={focused ? "home" : "home-outline"}
-                size={24}
-                color={"black"}
-                style={!focused ? styles.icon : styles.focusedIcon}
-              />
-            );
-          },
-        }}
-      />
-      <Tabs.Screen
-        name="search"
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <Ionicons
-                name={"search"}
                 size={24}
                 color={"black"}
                 style={!focused ? styles.icon : styles.focusedIcon}
@@ -66,6 +55,15 @@ const Layout = () => {
               />
             );
           },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Ionicons name="arrow-back" size={28} color={"green"} />
+            </TouchableOpacity>
+          ),
         }}
       />
       <Tabs.Screen
@@ -73,14 +71,26 @@ const Layout = () => {
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <Ionicons
-                name={"cart-sharp"}
-                size={24}
-                color={"black"}
-                style={!focused ? styles.icon : styles.focusedIcon}
-              />
+              <>
+                <Ionicons
+                  name={"cart-sharp"}
+                  size={24}
+                  color={"black"}
+                  style={!focused ? styles.icon : styles.focusedIcon}
+                />
+                {quantity > 0 && <View style={styles.cartNotification} />}
+              </>
             );
           },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Ionicons name="arrow-back" size={28} color={"green"} />
+            </TouchableOpacity>
+          ),
         }}
       />
     </Tabs>
@@ -93,6 +103,15 @@ const styles = StyleSheet.create({
   },
   focusedIcon: {
     opacity: 100,
+  },
+  cartNotification: {
+    position: "absolute",
+    bottom: 37,
+    right: 50,
+    width: 10,
+    height: 10,
+    borderRadius: 16,
+    backgroundColor: "#FF0000",
   },
 });
 

@@ -17,7 +17,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigation } from "expo-router";
 
 import tw from "twrnc";
-import ItemBox from "../../components/ItemBox";
+import ItemBox from "../../components/Layout/ItemBox";
 import firebase_app from "../../firebase/config";
 
 import BouncyCheckbox from "react-native-bouncy-checkbox";

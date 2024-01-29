@@ -1,6 +1,7 @@
 export interface Restaurant {
   name: string;
   id: string;
+  description: string;
   img: string;
   lat: number;
   long: number;
@@ -15,8 +16,13 @@ export interface Restaurant {
 }
 
 export interface Meal {
+  categoryName: string;
+  foodItems: FoodItem[];
+}
+
+export interface FoodItem {
   name: string;
   price: number;
   info: string;
-  img: any;
+  img: string;
 }

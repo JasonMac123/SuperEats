@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import tw from "twrnc";
 
-import Header from "../../components/Header";
+import Header from "../../components/Layout/Header";
 import Categories from "../../components/Category/Categories";
 import Restaurants from "../../components/Restaurant/Restaurants";
 import { StatusBar } from "expo-status-bar";

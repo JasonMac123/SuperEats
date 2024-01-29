@@ -8,7 +8,7 @@ import {
 import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import UserPosition from "./UserPosition";
+import UserPosition from "../UserPosition";
 
 import tw from "twrnc";
 
