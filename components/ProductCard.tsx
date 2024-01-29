@@ -18,14 +18,19 @@ interface ProductCartProps {
 
 const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
   return (
-    <View style={tw`flex-row justify-between`}>
-      <Image source={{ uri: item.img }} width={100} height={100} />
-      <View style={tw`justify-start items-start px-4 py-2`}>
+    <View style={tw`flex-row justify-between mx-4`}>
+      <Image
+        source={{ uri: item.img }}
+        width={100}
+        height={100}
+        style={tw`rounded-lg`}
+      />
+      <View style={tw`flex-1 justify-start items-start px-4 py-2`}>
         <Text style={tw`text-xl`}>{item.name}</Text>
         <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
       </View>
       <View
-        style={tw`flex-row gap-4 bg-neutral-200 items-center justify-center h-12 my-auto px-4 py-4`}
+        style={tw`flex-row gap-4 bg-neutral-200 items-center justify-center h-16 my-auto px-4 py-4 rounded-md`}
       >
         {item.quantity === 1 ? (
           <Feather
@@ -42,7 +47,7 @@ const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
             onPress={() => reduceProduct(item)}
           />
         )}
-        <Text>{item.quantity}</Text>
+        <Text style={tw`text-lg`}>{item.quantity}</Text>
         <AntDesign
           name="plus"
           size={24}
