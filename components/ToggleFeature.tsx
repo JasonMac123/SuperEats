@@ -14,14 +14,16 @@ const ToggleFeature = ({ title, description }: ToggleFeatureProps) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
-    <View>
-      <View>
-        <Text>{title}</Text>
-        <Text>{description}</Text>
+    <View
+      style={tw`flex-row bg-white px-4 py-2 items-center border border-gray-400`}
+    >
+      <View style={tw`flex-1`}>
+        <Text style={tw`text-xl`}>{title}</Text>
+        <Text style={tw`text-neutral-400`}>{description}</Text>
       </View>
       <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+        trackColor={{ false: "#767577", true: "#bbf7d0" }}
+        thumbColor={isEnabled ? "#16a34a" : "#f4f3f4"}
         ios_backgroundColor="#3e3e3e"
         onValueChange={toggleSwitch}
         value={isEnabled}
