@@ -27,9 +27,9 @@ const Cart = () => {
 
   return (
     <SafeAreaView style={tw`flex-1`}>
-      <View style={tw`mx-4 my-4`}>
-        <Text style={tw`text-2xl mt-4`}>Delivery</Text>
-        <View style={tw`flex-row`}>
+      <View style={tw` my-4`}>
+        <Text style={tw`text-2xl mt-4 mx-4`}>Delivery</Text>
+        <View style={tw`flex-row bg-white py-4 px-4 border border-gray-400`}>
           <MaterialIcons name="delivery-dining" size={32} color="black" />
           <Text style={tw`flex-1 mx-2`}>
             Deliver from {getDeliveryTime(deliveryTime).join(" - ")} minutes{" "}
