@@ -6,12 +6,12 @@ import firebase_app from "../../firebase/config";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 
 import { Restaurant } from "../../constants/types";
+import { useCart } from "../../hooks/useCart";
 
 import ParallaxHeader from "../../components/Parallax/ParallaxHeader";
 import SkeletonHeader from "../../components/Skeleton/SkeletonHeader";
 import SkeletonSection from "../../components/Skeleton/SkeletonSection";
-import RestaurantFooter from "../../components/RestaurantFooter";
-import { useCart } from "../../hooks/useCart";
+import RestaurantFooter from "../../components/Footers/RestaurantFooter";
 
 const RestaurantIdPage = () => {
   const { restaurantId } = useLocalSearchParams();

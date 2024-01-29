@@ -1,10 +1,10 @@
 import { SafeAreaView, View, Text } from "react-native";
 import React from "react";
 
-import { FontAwesome, Feather, Entypo } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 import tw from "twrnc";
-import IconCard from "../../components/IconCard";
+import IconCard from "../../components/Cards/IconCard";
 
 const Profile = () => {
   return (

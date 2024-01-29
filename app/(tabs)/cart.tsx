@@ -8,8 +8,8 @@ import { useCart } from "../../hooks/useCart";
 import { useRestaurant } from "../../hooks/useRestaurant";
 import { getDeliveryTime } from "../../functions/getDeliveryTime";
 
-import ProductCard from "../../components/ProductCard";
-import CartFooter from "../../components/CartFooter";
+import ProductCard from "../../components/Cards/ProductCard";
+import CartFooter from "../../components/Footers/CartFooter";
 import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {

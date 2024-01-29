@@ -6,7 +6,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 import tw from "twrnc";
 
-import { FoodItem } from "../constants/types";
+import { FoodItem } from "../../constants/types";
 
 interface ProductCartProps {
   item: FoodItem & {

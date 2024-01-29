@@ -1,11 +1,12 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import React from "react";
-
 import tw from "twrnc";
-import { FoodItem } from "../constants/types";
-import useFoodItem from "../hooks/useFoodItem";
-import { useRestaurant } from "../hooks/useRestaurant";
+
+import useFoodItem from "../../hooks/useFoodItem";
+import { useRestaurant } from "../../hooks/useRestaurant";
+
+import { FoodItem } from "../../constants/types";
 
 interface FoodItemCardProps {
   item: FoodItem;
