@@ -16,10 +16,10 @@ const foodItem = () => {
   const { item, deliveryTime, fee, restaurantName } = useFoodItem();
   const { restaurantOrderName, setRestaurantOrderName, setFee, setTime } =
     useRestaurant();
-  const { addProduct } = useCart();
+  const { quantity, addProduct } = useCart();
 
   const addToCart = (item: FoodItem) => {
-    if (!restaurantOrderName) {
+    if (!restaurantOrderName || quantity === 0) {
       setRestaurantOrderName(restaurantName);
       addProduct(item);
       setTime(deliveryTime);
