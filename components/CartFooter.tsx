@@ -13,11 +13,11 @@ const CartFooter = ({ orderFood }: CartFooterProps) => {
     <View style={styles.footer}>
       <Link href={"/cart"} asChild>
         <TouchableOpacity
-          style={tw`bg-green-700 px-4 py-6 rounded-md`}
+          style={tw`bg-green-700 px-4 py-4 rounded-md`}
           onPress={() => orderFood()}
         >
           <View style={tw`flex-row justify-center gap-4`}>
-            <Text>Purchase</Text>
+            <Text style={tw`text-white`}>Purchase</Text>
           </View>
         </TouchableOpacity>
       </Link>
@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
   footer: {
     position: "absolute",
     backgroundColor: "#fff",
-    bottom: 0,
+    bottom: 100,
     left: 0,
     width: "100%",
-    padding: 30,
+    padding: 20,
     elevation: 10,
     borderTopColor: "grey",
     borderTopWidth: 2,

@@ -25,7 +25,7 @@ const Cart = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={tw`flex-1`}>
       <View style={tw`mx-4 my-4`}>
         <Text style={tw`text-2xl mt-4`}>Delivery</Text>
         <View style={tw`flex-row`}>
