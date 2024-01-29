@@ -61,7 +61,7 @@ const Layout = () => {
                 navigation.goBack();
               }}
             >
-              <Ionicons name="close-outline" size={28} color={"green"} />
+              <Ionicons name="arrow-back" size={28} color={"green"} />
             </TouchableOpacity>
           ),
         }}
@@ -88,7 +88,7 @@ const Layout = () => {
                 navigation.goBack();
               }}
             >
-              <Ionicons name="close-outline" size={28} color={"green"} />
+              <Ionicons name="arrow-back" size={28} color={"green"} />
             </TouchableOpacity>
           ),
         }}
