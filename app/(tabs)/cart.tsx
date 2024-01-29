@@ -57,10 +57,10 @@ const Cart = () => {
           />
         )}
         ListFooterComponent={
-          <View>
-            <View style={tw`flex-row justify-between mx-2`}>
-              <Text>Subtotal</Text>
-              <Text>${total}</Text>
+          <View style={tw`bg-white`}>
+            <View style={tw`flex-row justify-between mx-2 mt-4`}>
+              <Text style={tw`text-xl`}>Subtotal</Text>
+              <Text style={tw`text-lg`}>${total}</Text>
             </View>
           </View>
         }

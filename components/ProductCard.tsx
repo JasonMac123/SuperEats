@@ -18,7 +18,7 @@ interface ProductCartProps {
 
 const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
   return (
-    <View style={tw`flex-row justify-between mx-4`}>
+    <View style={tw`flex-row justify-between mx-4 bg-white rounded-md`}>
       <Image
         source={{ uri: item.img }}
         width={100}
