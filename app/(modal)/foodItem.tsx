@@ -13,15 +13,24 @@ import { useRestaurant } from "../../hooks/useRestaurant";
 const foodItem = () => {
   const navigation = useNavigation();
 
-  const { item, deliveryTime, fee } = useFoodItem();
-  const { setFee, setTime } = useRestaurant();
+  const { item, deliveryTime, fee, restaurantName } = useFoodItem();
+  const { restaurantOrderName, setRestaurantOrderName, setFee, setTime } =
+    useRestaurant();
   const { addProduct } = useCart();
 
   const addToCart = (item: FoodItem) => {
-    addProduct(item);
-    setTime(deliveryTime);
-    setFee(fee);
-    navigation.goBack();
+    if (!restaurantOrderName) {
+      setRestaurantOrderName(restaurantName);
+      addProduct(item);
+      setTime(deliveryTime);
+      setFee(fee);
+      return navigation.goBack();
+    }
+
+    if (restaurantName === restaurantOrderName) {
+      addProduct(item);
+    } else {
+    }
   };
 
   return (

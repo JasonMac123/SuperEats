@@ -13,6 +13,7 @@ interface FoodItemCardProps {
   minDeliveryTime: number;
   maxDeliveryTime: number;
   fee: number;
+  name: string;
 }
 
 const FoodItemCard = ({
@@ -20,8 +21,9 @@ const FoodItemCard = ({
   minDeliveryTime,
   maxDeliveryTime,
   fee,
+  name,
 }: FoodItemCardProps) => {
-  const { setItem, setDeliveryTime, setFee } = useFoodItem();
+  const { setItem, setDeliveryTime, setFee, setRestaurantName } = useFoodItem();
 
   return (
     <Link href={"/(modal)/foodItem"} asChild>
@@ -30,6 +32,7 @@ const FoodItemCard = ({
           setItem(item);
           setDeliveryTime([minDeliveryTime, maxDeliveryTime]);
           setFee(fee);
+          setRestaurantName(name);
         }}
       >
         <View style={tw`flex-row justify-between mx-4`}>

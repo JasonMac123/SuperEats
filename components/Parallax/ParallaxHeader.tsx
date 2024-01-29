@@ -121,6 +121,7 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
                 minDeliveryTime={data.minDeliveryTime}
                 maxDeliveryTime={data.maxDeliveryTime}
                 fee={data.fee}
+                name={data.name}
               />
             )}
             renderSectionHeader={({ section: { title } }) => (
