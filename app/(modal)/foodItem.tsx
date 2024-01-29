@@ -8,15 +8,19 @@ import { FoodItem } from "../../constants/types";
 import useFoodItem from "../../hooks/useFoodItem";
 import { useCart } from "../../hooks/useCart";
 import { useNavigation } from "expo-router";
+import { useRestaurant } from "../../hooks/useRestaurant";
 
 const foodItem = () => {
   const navigation = useNavigation();
 
-  const { item } = useFoodItem();
+  const { item, deliveryTime, fee } = useFoodItem();
+  const { setFee, setTime } = useRestaurant();
   const { addProduct } = useCart();
 
   const addToCart = (item: FoodItem) => {
     addProduct(item);
+    setTime(deliveryTime);
+    setFee(fee);
     navigation.goBack();
   };
 

@@ -21,15 +21,14 @@ const FoodItemCard = ({
   maxDeliveryTime,
   fee,
 }: FoodItemCardProps) => {
-  const { setItem } = useFoodItem();
-  const { setTime, setFee } = useRestaurant();
+  const { setItem, setDeliveryTime, setFee } = useFoodItem();
 
   return (
     <Link href={"/(modal)/foodItem"} asChild>
       <TouchableOpacity
         onPress={() => {
           setItem(item);
-          setTime([minDeliveryTime, maxDeliveryTime]);
+          setDeliveryTime([minDeliveryTime, maxDeliveryTime]);
           setFee(fee);
         }}
       >

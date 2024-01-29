@@ -10,6 +10,7 @@ interface RestaurantStore {
 export const useRestaurant = create<RestaurantStore>((set) => ({
   fee: 0,
   deliveryTime: [],
+  restaurants: [],
   setFee: (fee) => set({ fee }),
   setTime: (timeArray) => set({ deliveryTime: timeArray }),
 }));
