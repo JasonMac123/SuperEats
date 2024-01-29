@@ -1,4 +1,4 @@
-import { FlatList, SafeAreaView, Text, View } from "react-native";
+import { FlatList, SafeAreaView, Switch, Text, View } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -8,6 +8,7 @@ import { useCart } from "../../hooks/useCart";
 import ProductCard from "../../components/ProductCard";
 import { getDeliveryTime } from "../../functions/getDeliveryTime";
 import CartFooter from "../../components/CartFooter";
+import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
   const {
@@ -36,6 +37,10 @@ const Cart = () => {
           <Text style={tw`text-green-600 text-xl`}>Change</Text>
         </View>
       </View>
+      <ToggleFeature
+        title="Add Cutlery?"
+        description="Help save the environment and cut down on environmental waste!"
+      />
       <FlatList
         data={products}
         ListHeaderComponent={() => (
