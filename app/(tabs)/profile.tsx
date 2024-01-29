@@ -4,6 +4,7 @@ import React from "react";
 import { FontAwesome, Feather, Entypo } from "@expo/vector-icons";
 
 import tw from "twrnc";
+import IconCard from "../../components/IconCard";
 
 const Profile = () => {
   return (
@@ -13,18 +14,9 @@ const Profile = () => {
         <FontAwesome name="user" size={24} color="black" />
       </View>
       <View style={tw`flex-row`}>
-        <View>
-          <Entypo name="price-tag" size={24} color="black" />
-          <Text>Past Orders</Text>
-        </View>
-        <View>
-          <Entypo name="credit-card" size={24} color="black" />
-          <Text>Payment Options</Text>
-        </View>
-        <View>
-          <Entypo name="price-tag" size={24} color="black" />
-          <Text>Past Orders</Text>
-        </View>
+        <IconCard entypoIconName="shopping-basket" label="Past Orders" />
+        <IconCard entypoIconName="credit-card" label="Payment Options" />
+        <IconCard entypoIconName="price-tag" label="Offers and Coupons" />
       </View>
     </SafeAreaView>
   );
