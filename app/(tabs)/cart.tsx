@@ -1,6 +1,13 @@
-import { FlatList, SafeAreaView, Text, View } from "react-native";
+import {
+  FlatList,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Link, useNavigation } from "expo-router";
+import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import tw from "twrnc";
 
@@ -13,6 +20,7 @@ import CartFooter from "../../components/Footers/CartFooter";
 import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
+  const navigation = useNavigation();
   const { products, total, quantity, addProduct, reduceProduct, clearCart } =
     useCart();
   const { deliveryTime, fee, restaurantOrderName } = useRestaurant();
@@ -24,7 +32,21 @@ const Cart = () => {
   if (quantity < 1) {
     return (
       <SafeAreaView>
-        <Text>Nothing in cart</Text>
+        <View>
+          <MaterialCommunityIcons name="shopping" size={40} color={"green"} />
+          <Text style={tw`w-40`}>
+            You have no items in your cart, add some items in your cart!
+          </Text>
+          <Link href={`/home`} asChild>
+            <TouchableOpacity>
+              <View
+                style={tw`bg-green-700 rounded-lg px-4 py-2 items-center justify-center`}
+              >
+                <Text>Checkout Restaurants</Text>
+              </View>
+            </TouchableOpacity>
+          </Link>
+        </View>
       </SafeAreaView>
     );
   }
