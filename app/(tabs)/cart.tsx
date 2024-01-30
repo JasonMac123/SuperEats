@@ -14,7 +14,7 @@ import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
   const { products, total, addProduct, reduceProduct, clearCart } = useCart();
-  const { deliveryTime } = useRestaurant();
+  const { deliveryTime, fee } = useRestaurant();
 
   const orderFood = () => {
     clearCart();
@@ -59,11 +59,21 @@ const Cart = () => {
             </View>
             <View style={tw`flex-row justify-between mx-2 mt-4`}>
               <Text style={tw`text-xl text-neutral-400`}>Service Fee</Text>
-              <Text style={tw`text-lg`}>${total}</Text>
+              <Text style={tw`text-lg`}>$2.99</Text>
             </View>
             <View style={tw`flex-row justify-between mx-2 mt-4`}>
               <Text style={tw`text-xl text-neutral-400`}>Delivery Fee</Text>
-              <Text style={tw`text-lg`}>${total}</Text>
+              <Text style={tw`text-lg`}>${(total * 1.13).toFixed(2)}</Text>
+            </View>
+            <View style={tw`flex-row justify-between mx-2 mt-4`}>
+              <Text style={tw`text-xl text-neutral-400`}>Tax</Text>
+              <Text style={tw`text-lg`}>${fee}</Text>
+            </View>
+            <View style={tw`flex-row justify-between mx-2 mt-4`}>
+              <Text style={tw`text-xl text-neutral-400`}>Delivery Fee</Text>
+              <Text style={tw`text-lg`}>
+                ${total + 2.99 + fee + (total * 1.13).toFixed(2)}
+              </Text>
             </View>
           </View>
         }
