@@ -18,7 +18,9 @@ const RestaurantFooter = ({ quantity, total }: RestaurantFooterProps) => {
             <Text style={tw`text-white text-lg`}>
               View Cart ( {quantity} ) items
             </Text>
-            <Text style={tw`text-white text-lg`}>Total: ${total}</Text>
+            <Text style={tw`text-white text-lg`}>
+              Total: ${total.toFixed(2)}
+            </Text>
           </View>
         </TouchableOpacity>
       </Link>

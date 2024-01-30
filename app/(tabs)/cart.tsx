@@ -13,12 +13,21 @@ import CartFooter from "../../components/Footers/CartFooter";
 import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
-  const { products, total, addProduct, reduceProduct, clearCart } = useCart();
+  const { products, total, quantity, addProduct, reduceProduct, clearCart } =
+    useCart();
   const { deliveryTime, fee } = useRestaurant();
 
   const orderFood = () => {
     clearCart();
   };
+
+  if (quantity < 1) {
+    return (
+      <View>
+        <Text>Nothing in cart</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={tw`flex-1`}>
@@ -39,7 +48,7 @@ const Cart = () => {
       <FlatList
         data={products}
         ListHeaderComponent={() => (
-          <Text style={tw`text-xl my-2 pl-4`}>Items</Text>
+          <Text style={tw`flex-1 text-xl my-2 pl-4`}>Items</Text>
         )}
         ItemSeparatorComponent={() => (
           <View style={{ height: 1, backgroundColor: "#FCFCFC" }} />
@@ -55,7 +64,7 @@ const Cart = () => {
           <View style={tw`bg-white`}>
             <View style={tw`flex-row justify-between mx-2 mt-4`}>
               <Text style={tw`text-xl text-neutral-400`}>Subtotal</Text>
-              <Text style={tw`text-lg`}>${total}</Text>
+              <Text style={tw`text-lg`}>${total.toFixed(2)}</Text>
             </View>
             <View style={tw`flex-row justify-between mx-2 mt-4`}>
               <Text style={tw`text-xl text-neutral-400`}>Service Fee</Text>
@@ -72,7 +81,7 @@ const Cart = () => {
             <View style={tw`flex-row justify-between mx-2 mt-4`}>
               <Text style={tw`text-xl text-neutral-400`}>Delivery Fee</Text>
               <Text style={tw`text-lg`}>
-                ${total + 2.99 + fee + (total * 1.13).toFixed(2)}
+                ${(total + 2.99 + fee + total * 1.13).toFixed(2)}
               </Text>
             </View>
           </View>
