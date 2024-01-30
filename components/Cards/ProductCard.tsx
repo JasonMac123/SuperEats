@@ -30,27 +30,27 @@ const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
         <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
       </View>
       <View
-        style={tw`flex-row gap-4 bg-neutral-200 items-center justify-center h-16 my-auto px-4 py-4 rounded-md`}
+        style={tw`flex-row gap-4 bg-neutral-200 items-center justify-center h-16 my-auto px-4 py-4 mr-4 rounded-md`}
       >
         {item.quantity === 1 ? (
           <Feather
             name="trash"
-            size={24}
+            size={16}
             color="black"
             onPress={() => reduceProduct(item)}
           />
         ) : (
           <AntDesign
             name="minus"
-            size={24}
+            size={16}
             color="black"
             onPress={() => reduceProduct(item)}
           />
         )}
-        <Text style={tw`text-lg`}>{item.quantity}</Text>
+        <Text style={tw`text-sm`}>{item.quantity}</Text>
         <AntDesign
           name="plus"
-          size={24}
+          size={16}
           color="black"
           onPress={() => addToCart(item)}
         />

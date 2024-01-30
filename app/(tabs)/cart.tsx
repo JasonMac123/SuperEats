@@ -15,7 +15,7 @@ import ToggleFeature from "../../components/ToggleFeature";
 const Cart = () => {
   const { products, total, quantity, addProduct, reduceProduct, clearCart } =
     useCart();
-  const { deliveryTime, fee } = useRestaurant();
+  const { deliveryTime, fee, restaurantOrderName } = useRestaurant();
 
   const orderFood = () => {
     clearCart();
@@ -23,16 +23,18 @@ const Cart = () => {
 
   if (quantity < 1) {
     return (
-      <View>
+      <SafeAreaView>
         <Text>Nothing in cart</Text>
-      </View>
+      </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView style={tw`flex-1`}>
-      <View style={tw` my-4`}>
-        <Text style={tw`text-2xl mt-4 mx-4`}>Delivery</Text>
+    <View style={tw`flex-1`}>
+      <View>
+        <Text style={tw`text-2xl mt-2 mx-4`}>
+          {restaurantOrderName} - Delivery
+        </Text>
         <View style={tw`flex-row bg-white py-4 px-4 border border-gray-400`}>
           <MaterialIcons name="delivery-dining" size={32} color="black" />
           <Text style={tw`flex-1 mx-2`}>
@@ -51,7 +53,9 @@ const Cart = () => {
           <Text style={tw`flex-1 text-xl my-2 pl-4`}>Items</Text>
         )}
         ItemSeparatorComponent={() => (
-          <View style={{ height: 1, backgroundColor: "#FCFCFC" }} />
+          <View
+            style={{ height: 1, backgroundColor: "#FCFCFC", marginVertical: 4 }}
+          />
         )}
         renderItem={({ item }) => (
           <ProductCard
@@ -61,7 +65,7 @@ const Cart = () => {
           />
         )}
         ListFooterComponent={
-          <View style={tw`bg-white`}>
+          <View style={tw`bg-white mx-4`}>
             <View style={tw`flex-row justify-between mx-2 mt-4`}>
               <Text style={tw`text-xl text-neutral-400`}>Subtotal</Text>
               <Text style={tw`text-lg`}>${total.toFixed(2)}</Text>
@@ -88,7 +92,7 @@ const Cart = () => {
         }
       />
       <CartFooter orderFood={orderFood} />
-    </SafeAreaView>
+    </View>
   );
 };
 
