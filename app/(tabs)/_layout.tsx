@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import tw from "twrnc";
 
 import { Tabs, useNavigation } from "expo-router";
 import { useCart } from "../../hooks/useCart";
@@ -69,15 +69,11 @@ const Layout = () => {
       <Tabs.Screen
         name="cart"
         options={{
-          tabBarIcon: ({ focused }) => {
+          tabBarStyle: { display: "none" },
+          tabBarIcon: () => {
             return (
               <>
-                <Ionicons
-                  name={"cart-sharp"}
-                  size={24}
-                  color={"black"}
-                  style={!focused ? styles.icon : styles.focusedIcon}
-                />
+                <Ionicons name={"cart-sharp"} size={24} color={"black"} />
                 {quantity > 0 && <View style={styles.cartNotification} />}
               </>
             );
@@ -87,6 +83,7 @@ const Layout = () => {
               onPress={() => {
                 navigation.goBack();
               }}
+              style={tw`ml-2`}
             >
               <Ionicons name="arrow-back" size={28} color={"green"} />
             </TouchableOpacity>

@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
   footer: {
     position: "absolute",
     backgroundColor: "#fff",
-    bottom: 100,
+    bottom: 0,
     left: 0,
     width: "100%",
-    padding: 20,
+    padding: 30,
     elevation: 10,
     borderTopColor: "grey",
     borderTopWidth: 2,
