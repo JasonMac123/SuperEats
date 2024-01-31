@@ -69,7 +69,7 @@ const Layout = () => {
       <Tabs.Screen
         name="cart"
         options={{
-          tabBarStyle: { display: "none" },
+          tabBarStyle: { display: quantity > 0 ? "flex" : "none" },
           tabBarIcon: () => {
             return (
               <>

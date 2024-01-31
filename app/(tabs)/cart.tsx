@@ -6,7 +6,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { Link, useNavigation } from "expo-router";
+import { Link } from "expo-router";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import tw from "twrnc";
@@ -20,7 +20,6 @@ import CartFooter from "../../components/Footers/CartFooter";
 import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
-  const navigation = useNavigation();
   const { products, total, quantity, addProduct, reduceProduct, clearCart } =
     useCart();
   const { deliveryTime, fee, restaurantOrderName } = useRestaurant();
