@@ -23,9 +23,9 @@ const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
         source={{ uri: item.img }}
         width={100}
         height={100}
-        style={tw`rounded-lg`}
+        style={tw`rounded-lg mt-4 ml-4`}
       />
-      <View style={tw`flex-1 justify-start items-start px-4 py-2`}>
+      <View style={tw`flex-1 justify-start items-start px-4 py-2 mt-2`}>
         <Text style={tw`text-xl`}>{item.name}</Text>
         <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
       </View>

@@ -21,7 +21,7 @@ export default function RootLayoutNav() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
         <StatusBar style="auto" />
-        <Stack>
+        <Stack initialRouteName="index">
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
             name="(modal)/filter"

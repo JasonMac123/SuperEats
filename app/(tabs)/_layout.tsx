@@ -69,11 +69,16 @@ const Layout = () => {
       <Tabs.Screen
         name="cart"
         options={{
-          tabBarStyle: { display: quantity > 0 ? "flex" : "none" },
-          tabBarIcon: () => {
+          tabBarStyle: { display: quantity > 0 ? "none" : "flex", height: 100 },
+          tabBarIcon: ({ focused }) => {
             return (
               <>
-                <Ionicons name={"cart-sharp"} size={24} color={"black"} />
+                <Ionicons
+                  name={"cart-sharp"}
+                  size={24}
+                  color={"black"}
+                  style={!focused ? styles.icon : styles.focusedIcon}
+                />
                 {quantity > 0 && <View style={styles.cartNotification} />}
               </>
             );

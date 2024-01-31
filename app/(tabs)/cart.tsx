@@ -6,7 +6,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { Link } from "expo-router";
+import { Link, useNavigation } from "expo-router";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import tw from "twrnc";
@@ -20,6 +20,7 @@ import CartFooter from "../../components/Footers/CartFooter";
 import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
+  const navigation = useNavigation();
   const { products, total, quantity, addProduct, reduceProduct, clearCart } =
     useCart();
   const { deliveryTime, fee, restaurantOrderName } = useRestaurant();
@@ -31,17 +32,19 @@ const Cart = () => {
   if (quantity < 1) {
     return (
       <SafeAreaView>
-        <View>
-          <MaterialCommunityIcons name="shopping" size={40} color={"green"} />
-          <Text style={tw`w-40`}>
-            You have no items in your cart, add some items in your cart!
+        <View style={tw`h-full items-center justify-center gap-4`}>
+          <MaterialCommunityIcons name="shopping" size={80} color={"green"} />
+          <Text style={tw`w-80 text-center text-lg`}>
+            You have no items in your cart, add some items to your cart!
           </Text>
           <Link href={`/home`} asChild>
             <TouchableOpacity>
               <View
-                style={tw`bg-green-700 rounded-lg px-4 py-2 items-center justify-center`}
+                style={tw`bg-green-700 rounded-lg px-4 py-2 items-center justify-center h-14 w-70`}
               >
-                <Text>Checkout Restaurants</Text>
+                <Text style={tw`text-white text-xl font-semibold`}>
+                  Checkout Restaurants
+                </Text>
               </View>
             </TouchableOpacity>
           </Link>
@@ -52,7 +55,7 @@ const Cart = () => {
 
   return (
     <View style={tw`flex-1`}>
-      <View>
+      <View style={tw`gap-4 `}>
         <Text style={tw`text-2xl mt-2 mx-4`}>
           {restaurantOrderName} - Delivery
         </Text>
@@ -63,15 +66,15 @@ const Cart = () => {
           </Text>
           <Text style={tw`text-green-600 text-xl`}>Change</Text>
         </View>
+        <ToggleFeature
+          title="Add Cutlery?"
+          description="Help save the environment and cut down on environmental waste!"
+        />
       </View>
-      <ToggleFeature
-        title="Add Cutlery?"
-        description="Help save the environment and cut down on environmental waste!"
-      />
       <FlatList
         data={products}
         ListHeaderComponent={() => (
-          <Text style={tw`flex-1 text-xl my-2 pl-4`}>Items</Text>
+          <Text style={tw`flex-1 text-3xl mt-2 mb-2 pl-4`}>Items</Text>
         )}
         ItemSeparatorComponent={() => (
           <View
