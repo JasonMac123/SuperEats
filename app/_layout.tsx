@@ -21,7 +21,7 @@ export default function RootLayoutNav() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
         <StatusBar style="auto" />
-        <Stack initialRouteName="index">
+        <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
             name="(modal)/filter"
@@ -88,6 +88,21 @@ export default function RootLayoutNav() {
                   }}
                   style={tw`bg-white rounded-full w-12 h-12 justify-center items-center`}
                 >
+                  <Ionicons name="close-outline" size={28} color={"green"} />
+                </TouchableOpacity>
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="restaurant/checkout"
+            options={{
+              presentation: "card",
+              headerShadowVisible: false,
+              headerStyle: {
+                backgroundColor: "#FCFCFC",
+              },
+              headerLeft: () => (
+                <TouchableOpacity onPress={() => {}}>
                   <Ionicons name="close-outline" size={28} color={"green"} />
                 </TouchableOpacity>
               ),

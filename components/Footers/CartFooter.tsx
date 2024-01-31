@@ -11,7 +11,7 @@ interface CartFooterProps {
 const CartFooter = ({ orderFood }: CartFooterProps) => {
   return (
     <View style={styles.footer}>
-      <Link href={"/cart"} asChild>
+      <Link href={"/restaurant/checkout"} asChild>
         <TouchableOpacity
           style={tw`bg-green-700 px-4 py-4 rounded-md`}
           onPress={() => orderFood()}

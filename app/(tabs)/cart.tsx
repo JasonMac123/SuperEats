@@ -20,7 +20,6 @@ import CartFooter from "../../components/Footers/CartFooter";
 import ToggleFeature from "../../components/ToggleFeature";
 
 const Cart = () => {
-  const navigation = useNavigation();
   const { products, total, quantity, addProduct, reduceProduct, clearCart } =
     useCart();
   const { deliveryTime, fee, restaurantOrderName } = useRestaurant();
