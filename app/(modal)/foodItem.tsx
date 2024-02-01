@@ -1,7 +1,9 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 import Animated, { FadeInLeft } from "react-native-reanimated";
 import tw from "twrnc";
+
+import { AntDesign } from "@expo/vector-icons";
 
 import { FoodItem } from "../../constants/types";
 
@@ -12,6 +14,7 @@ import { useRestaurant } from "../../hooks/useRestaurant";
 
 const foodItem = () => {
   const navigation = useNavigation();
+  const [counter, setCounter] = useState<number>(1);
 
   const { item, deliveryTime, fee, restaurantName } = useFoodItem();
   const { restaurantOrderName, setRestaurantOrderName, setFee, setTime } =
@@ -32,6 +35,13 @@ const foodItem = () => {
       navigation.goBack();
     } else {
     }
+  };
+
+  const handleCounter = (change: number) => {
+    if (change + counter <= 0) {
+      return;
+    }
+    setCounter(change + counter);
   };
 
   return (
@@ -55,6 +65,18 @@ const foodItem = () => {
         >
           {item?.info}
         </Animated.Text>
+        <View style={tw`mt-4 flex-row justify-between`}>
+          <Text style={tw`text-xl`}>Quantity</Text>
+          <View style={tw`flex-row`}>
+            <TouchableOpacity onPress={() => handleCounter(1)}>
+              <AntDesign name="pluscircle" size={24} color="black" />
+            </TouchableOpacity>
+            <Text>{counter}</Text>
+            <TouchableOpacity onPress={() => handleCounter(-1)}>
+              <AntDesign name="minuscircle" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
       <View style={styles.footer}>
         <View>
