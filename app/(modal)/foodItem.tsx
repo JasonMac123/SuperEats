@@ -24,14 +24,14 @@ const foodItem = () => {
   const addToCart = (item: FoodItem) => {
     if (!restaurantOrderName || quantity === 0) {
       setRestaurantOrderName(restaurantName);
-      addProduct(item);
+      addProduct(item, counter);
       setTime(deliveryTime);
       setFee(fee);
       return navigation.goBack();
     }
 
     if (restaurantName === restaurantOrderName) {
-      addProduct(item);
+      addProduct(item, counter);
       navigation.goBack();
     } else {
     }
