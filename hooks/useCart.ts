@@ -6,7 +6,7 @@ interface CartStore {
   products: Array<FoodItem & { quantity: number }>;
   quantity: number;
   total: number;
-  addProduct: (product: FoodItem) => void;
+  addProduct: (product: FoodItem, orderAmount?: number) => void;
   reduceProduct: (product: FoodItem) => void;
   clearCart: () => void;
 }
@@ -15,19 +15,20 @@ export const useCart = create<CartStore>((set) => ({
   products: [],
   quantity: 0,
   total: 0,
-  addProduct: (product) => {
+  addProduct: (product, orderAmount = 1) => {
     set((state) => {
-      state.quantity += 1;
+      state.quantity += orderAmount;
       state.total += product.price;
 
       const hasProduct = state.products.find((p) => p.name === product.name);
 
       if (hasProduct) {
-        hasProduct.quantity += 1;
-
+        hasProduct.quantity += orderAmount;
         return { products: [...state.products] };
       } else {
-        return { products: [...state.products, { ...product, quantity: 1 }] };
+        return {
+          products: [...state.products, { ...product, quantity: orderAmount }],
+        };
       }
     });
   },
