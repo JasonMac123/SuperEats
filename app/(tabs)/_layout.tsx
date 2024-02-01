@@ -69,6 +69,7 @@ const Layout = () => {
       <Tabs.Screen
         name="cart"
         options={{
+          headerTitle: "Delivery Cart",
           tabBarStyle: { display: quantity > 0 ? "none" : "flex", height: 100 },
           tabBarIcon: ({ focused }) => {
             return (
