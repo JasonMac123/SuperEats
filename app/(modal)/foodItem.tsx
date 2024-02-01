@@ -29,6 +29,7 @@ const foodItem = () => {
 
     if (restaurantName === restaurantOrderName) {
       addProduct(item);
+      navigation.goBack();
     } else {
     }
   };
