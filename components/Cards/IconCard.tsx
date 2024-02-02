@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
 import { Entypo } from "@expo/vector-icons";
@@ -12,12 +12,14 @@ interface IconCardProps {
 
 const IconCard = ({ entypoIconName, label }: IconCardProps) => {
   return (
-    <View
-      style={tw`bg-white items-center justify-center rounded-xl w-28 h-30 py-4`}
-    >
-      <Entypo name={entypoIconName} size={35} />
-      <Text style={tw`mt-2 mx-4`}>{label}</Text>
-    </View>
+    <TouchableOpacity>
+      <View
+        style={tw`bg-white items-center justify-center rounded-xl w-28 h-30 py-4`}
+      >
+        <Entypo name={entypoIconName} size={35} />
+        <Text style={tw`mt-2 mx-4`}>{label}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
