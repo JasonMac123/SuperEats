@@ -11,6 +11,14 @@ import SettingRow from "../../components/SettingRow";
 
 const settingsData: Array<Setting> = [
   { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "info-circle", name: "About" },
 ];
 
 const Profile = () => {
