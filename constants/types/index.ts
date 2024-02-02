@@ -1,3 +1,5 @@
+import { FontAwesome } from "@expo/vector-icons";
+
 export interface Restaurant {
   name: string;
   id: string;
@@ -26,3 +28,8 @@ export interface FoodItem {
   info: string;
   img: string;
 }
+
+export type Setting = {
+  fontAwesomeIconName: keyof typeof FontAwesome.glyphMap;
+  name: string;
+};
