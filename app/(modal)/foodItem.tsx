@@ -67,13 +67,13 @@ const foodItem = () => {
         </Animated.Text>
         <View style={tw`mt-4 flex-row justify-between`}>
           <Text style={tw`text-xl`}>Quantity</Text>
-          <View style={tw`flex-row`}>
+          <View style={tw`flex-row items-center justify-center gap-4`}>
             <TouchableOpacity onPress={() => handleCounter(1)}>
-              <AntDesign name="pluscircle" size={24} color="black" />
+              <AntDesign name="pluscircle" size={40} color="black" />
             </TouchableOpacity>
-            <Text>{counter}</Text>
+            <Text style={tw`text-xl`}>{counter}</Text>
             <TouchableOpacity onPress={() => handleCounter(-1)}>
-              <AntDesign name="minuscircle" size={24} color="black" />
+              <AntDesign name="minuscircle" size={40} color="black" />
             </TouchableOpacity>
           </View>
         </View>
