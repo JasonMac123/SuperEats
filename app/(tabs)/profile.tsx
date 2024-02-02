@@ -10,14 +10,10 @@ import IconCard from "../../components/Cards/IconCard";
 import SettingRow from "../../components/SettingRow";
 
 const settingsData: Array<Setting> = [
-  { fontAwesomeIconName: "info-circle", name: "About" },
-  { fontAwesomeIconName: "info-circle", name: "About" },
-  { fontAwesomeIconName: "info-circle", name: "About" },
-  { fontAwesomeIconName: "info-circle", name: "About" },
-  { fontAwesomeIconName: "info-circle", name: "About" },
-  { fontAwesomeIconName: "info-circle", name: "About" },
-  { fontAwesomeIconName: "info-circle", name: "About" },
-  { fontAwesomeIconName: "info-circle", name: "About" },
+  { fontAwesomeIconName: "eye-slash", name: "Privacy" },
+  { fontAwesomeIconName: "star", name: "Favourites" },
+  { fontAwesomeIconName: "mobile-phone", name: "Communications" },
+  { fontAwesomeIconName: "envelope", name: "Help" },
   { fontAwesomeIconName: "info-circle", name: "About" },
 ];
 
