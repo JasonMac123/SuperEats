@@ -18,7 +18,7 @@ export const useCart = create<CartStore>((set) => ({
   addProduct: (product, orderAmount = 1) => {
     set((state) => {
       state.quantity += orderAmount;
-      state.total += product.price;
+      state.total += product.price * orderAmount;
 
       const hasProduct = state.products.find((p) => p.name === product.name);
 
