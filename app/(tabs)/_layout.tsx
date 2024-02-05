@@ -45,6 +45,7 @@ const Layout = () => {
       <Tabs.Screen
         name="profile"
         options={{
+          headerTitle: "User Settings",
           tabBarIcon: ({ focused }) => {
             return (
               <FontAwesome
