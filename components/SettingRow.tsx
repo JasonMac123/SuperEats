@@ -14,7 +14,7 @@ interface SettingRowProps {
 const SettingRow = ({ setting }: SettingRowProps) => {
   return (
     <TouchableOpacity>
-      <View style={tw`flex-row px-4 py-2 bg-white items-center gap-2`}>
+      <View style={tw`flex-row px-4 py-4 bg-white items-center gap-2`}>
         <FontAwesome name={setting.fontAwesomeIconName} size={24} />
         <Text>{setting.name}</Text>
       </View>
