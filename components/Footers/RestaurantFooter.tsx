@@ -13,12 +13,14 @@ const RestaurantFooter = ({ quantity, total }: RestaurantFooterProps) => {
   return (
     <View style={styles.footer}>
       <Link href={"/cart"} asChild>
-        <TouchableOpacity style={tw`bg-green-700 px-4 py-6 rounded-md`}>
+        <TouchableOpacity style={tw`bg-green-700 px-4 py-4 rounded-md`}>
           <View style={tw`flex-row justify-center gap-4`}>
             <Text style={tw`text-white text-lg`}>
               View Cart ( {quantity} ) items
             </Text>
-            <Text style={tw`text-white text-lg`}>Total: ${total}</Text>
+            <Text style={tw`text-white text-lg`}>
+              Total: ${total.toFixed(2)}
+            </Text>
           </View>
         </TouchableOpacity>
       </Link>

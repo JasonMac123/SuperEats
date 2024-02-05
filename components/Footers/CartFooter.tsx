@@ -11,7 +11,7 @@ interface CartFooterProps {
 const CartFooter = ({ orderFood }: CartFooterProps) => {
   return (
     <View style={styles.footer}>
-      <Link href={"/cart"} asChild>
+      <Link href={"/restaurant/checkout"} asChild>
         <TouchableOpacity
           style={tw`bg-green-700 px-4 py-4 rounded-md`}
           onPress={() => orderFood()}
@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
   footer: {
     position: "absolute",
     backgroundColor: "#fff",
-    bottom: 100,
+    bottom: 0,
     left: 0,
     width: "100%",
-    padding: 20,
+    padding: 30,
     elevation: 10,
     borderTopColor: "grey",
     borderTopWidth: 2,

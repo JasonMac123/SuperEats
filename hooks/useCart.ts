@@ -4,33 +4,31 @@ import { FoodItem } from "../constants/types";
 
 interface CartStore {
   products: Array<FoodItem & { quantity: number }>;
-  deliveryTime: Array<number>;
   quantity: number;
   total: number;
-  addProduct: (product: FoodItem) => void;
+  addProduct: (product: FoodItem, orderAmount?: number) => void;
   reduceProduct: (product: FoodItem) => void;
   clearCart: () => void;
-  setTime: (timeArray: Array<number>) => void;
 }
 
 export const useCart = create<CartStore>((set) => ({
   products: [],
-  deliveryTime: [],
   quantity: 0,
   total: 0,
-  addProduct: (product) => {
+  addProduct: (product, orderAmount = 1) => {
     set((state) => {
-      state.quantity += 1;
-      state.total += product.price;
+      state.quantity += orderAmount;
+      state.total += product.price * orderAmount;
 
       const hasProduct = state.products.find((p) => p.name === product.name);
 
       if (hasProduct) {
-        hasProduct.quantity += 1;
-
+        hasProduct.quantity += orderAmount;
         return { products: [...state.products] };
       } else {
-        return { products: [...state.products, { ...product, quantity: 1 }] };
+        return {
+          products: [...state.products, { ...product, quantity: orderAmount }],
+        };
       }
     });
   },
@@ -52,5 +50,4 @@ export const useCart = create<CartStore>((set) => ({
     });
   },
   clearCart: () => set({ products: [], quantity: 0, total: 0 }),
-  setTime: (timeArray) => set({ deliveryTime: timeArray }),
 }));

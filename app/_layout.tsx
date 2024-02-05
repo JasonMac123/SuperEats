@@ -93,6 +93,21 @@ export default function RootLayoutNav() {
               ),
             }}
           />
+          <Stack.Screen
+            name="restaurant/checkout"
+            options={{
+              presentation: "card",
+              headerShadowVisible: false,
+              headerStyle: {
+                backgroundColor: "#FCFCFC",
+              },
+              headerLeft: () => (
+                <TouchableOpacity onPress={() => {}}>
+                  <Ionicons name="close-outline" size={28} color={"green"} />
+                </TouchableOpacity>
+              ),
+            }}
+          />
         </Stack>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>

@@ -10,6 +10,7 @@ import tw from "twrnc";
 import SearchBar from "./SearchBar";
 import BottomSheet from "./BottomSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { Link } from "expo-router";
 
 const Header = () => {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
@@ -39,9 +40,11 @@ const Header = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity>
-          <FontAwesome5 name="user-alt" size={24} color="black" />
-        </TouchableOpacity>
+        <Link href={"/(tabs)/profile"} asChild>
+          <TouchableOpacity>
+            <FontAwesome5 name="user-alt" size={24} color="black" />
+          </TouchableOpacity>
+        </Link>
       </View>
       <SearchBar />
     </>

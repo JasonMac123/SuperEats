@@ -6,7 +6,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 import tw from "twrnc";
 
-import { FoodItem } from "../constants/types";
+import { FoodItem } from "../../constants/types";
 
 interface ProductCartProps {
   item: FoodItem & {
@@ -18,39 +18,39 @@ interface ProductCartProps {
 
 const ProductCard = ({ item, addToCart, reduceProduct }: ProductCartProps) => {
   return (
-    <View style={tw`flex-row justify-between mx-4`}>
+    <View style={tw`flex-row justify-between mx-4 bg-white rounded-md`}>
       <Image
         source={{ uri: item.img }}
         width={100}
         height={100}
-        style={tw`rounded-lg`}
+        style={tw`rounded-lg mt-4 ml-4`}
       />
-      <View style={tw`flex-1 justify-start items-start px-4 py-2`}>
+      <View style={tw`flex-1 justify-start items-start px-4 py-2 mt-2`}>
         <Text style={tw`text-xl`}>{item.name}</Text>
         <Text style={tw`text-neutral-400`}>{item.price * item.quantity}</Text>
       </View>
       <View
-        style={tw`flex-row gap-4 bg-neutral-200 items-center justify-center h-16 my-auto px-4 py-4 rounded-md`}
+        style={tw`flex-row gap-4 bg-neutral-200 items-center justify-center h-16 my-auto px-4 py-4 mr-4 rounded-md`}
       >
         {item.quantity === 1 ? (
           <Feather
             name="trash"
-            size={24}
+            size={16}
             color="black"
             onPress={() => reduceProduct(item)}
           />
         ) : (
           <AntDesign
             name="minus"
-            size={24}
+            size={16}
             color="black"
             onPress={() => reduceProduct(item)}
           />
         )}
-        <Text style={tw`text-lg`}>{item.quantity}</Text>
+        <Text style={tw`text-sm`}>{item.quantity}</Text>
         <AntDesign
           name="plus"
-          size={24}
+          size={16}
           color="black"
           onPress={() => addToCart(item)}
         />

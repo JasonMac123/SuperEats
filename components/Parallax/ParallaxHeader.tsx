@@ -20,7 +20,7 @@ import tw from "twrnc";
 import { Restaurant } from "../../constants/types";
 
 import ParallaxScrollView from "./ParallaxScrollView";
-import FoodItemCard from "../FoodItemCard";
+import FoodItemCard from "../Cards/FoodItemCard";
 import StickyHeader from "./StickyHeader";
 
 interface ParallaxHeaderProps {
@@ -120,6 +120,8 @@ const ParallaxHeader = ({ data }: ParallaxHeaderProps) => {
                 item={item}
                 minDeliveryTime={data.minDeliveryTime}
                 maxDeliveryTime={data.maxDeliveryTime}
+                fee={data.fee}
+                name={data.name}
               />
             )}
             renderSectionHeader={({ section: { title } }) => (

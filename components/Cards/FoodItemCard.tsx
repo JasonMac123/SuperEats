@@ -1,30 +1,38 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import React from "react";
-
 import tw from "twrnc";
-import { FoodItem } from "../constants/types";
-import useFoodItem from "../hooks/useFoodItem";
+
+import useFoodItem from "../../hooks/useFoodItem";
+import { useRestaurant } from "../../hooks/useRestaurant";
+
+import { FoodItem } from "../../constants/types";
 
 interface FoodItemCardProps {
   item: FoodItem;
   minDeliveryTime: number;
   maxDeliveryTime: number;
+  fee: number;
+  name: string;
 }
 
 const FoodItemCard = ({
   item,
   minDeliveryTime,
   maxDeliveryTime,
+  fee,
+  name,
 }: FoodItemCardProps) => {
-  const { setItem, setTime } = useFoodItem();
+  const { setItem, setDeliveryTime, setFee, setRestaurantName } = useFoodItem();
 
   return (
     <Link href={"/(modal)/foodItem"} asChild>
       <TouchableOpacity
         onPress={() => {
           setItem(item);
-          setTime([minDeliveryTime, maxDeliveryTime]);
+          setDeliveryTime([minDeliveryTime, maxDeliveryTime]);
+          setFee(fee);
+          setRestaurantName(name);
         }}
       >
         <View style={tw`flex-row justify-between mx-4`}>
