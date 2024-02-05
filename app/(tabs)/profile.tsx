@@ -28,7 +28,7 @@ const Profile = () => {
               <Text style={tw`text-2xl`}>Name</Text>
               <FontAwesome name="user" size={40} color="black" />
             </View>
-            <View style={tw`flex-row justify-between mx-4 gap-2 mt-4`}>
+            <View style={tw`flex-row justify-between mx-4 gap-2 mt-4 mb-4`}>
               <IconCard entypoIconName="shopping-basket" label="Past Orders" />
               <IconCard entypoIconName="wallet" label="Wallet" />
               <IconCard entypoIconName="price-tag" label="Offers" />
