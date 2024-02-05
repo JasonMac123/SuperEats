@@ -1,4 +1,10 @@
-import { SafeAreaView, View, Text, FlatList } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 
 import { FontAwesome } from "@expo/vector-icons";
@@ -19,14 +25,16 @@ const settingsData: Array<Setting> = [
 
 const Profile = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={tw`flex-1`}>
       <FlatList
         data={settingsData}
         ListHeaderComponent={() => (
           <>
             <View style={tw`flex-row px-6 py-2 justify-between mt-4 bg-white`}>
               <Text style={tw`text-2xl`}>Name</Text>
-              <FontAwesome name="user" size={40} color="black" />
+              <TouchableOpacity>
+                <FontAwesome name="user" size={40} color="black" />
+              </TouchableOpacity>
             </View>
             <View style={tw`flex-row justify-between mx-4 gap-2 mt-4 mb-4`}>
               <IconCard entypoIconName="shopping-basket" label="Past Orders" />
@@ -35,12 +43,10 @@ const Profile = () => {
             </View>
           </>
         )}
-        ItemSeparatorComponent={() => (
-          <View
-            style={{ height: 1, backgroundColor: "#FCFCFC", marginVertical: 4 }}
-          />
-        )}
         renderItem={({ item }) => <SettingRow setting={item} />}
+        ListFooterComponent={() => (
+          <Text style={tw`text-neutral-500 ml-2 mt-2`}>Ver 0.1.2.5</Text>
+        )}
       />
     </SafeAreaView>
   );
